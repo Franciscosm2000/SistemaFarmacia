@@ -39,7 +39,7 @@
                                     </v-text-field>
                                 </v-flex>
                                 <v-flex xs12 sm6 md6>
-                                    <v-text-field v-model="telefono" label="Teléfono">
+                                    <v-text-field mask="(###) ####-####" v-model="telefono" label="Teléfono">
                                     </v-text-field>
                                 </v-flex>
                                 <v-flex xs12 sm6 md6>

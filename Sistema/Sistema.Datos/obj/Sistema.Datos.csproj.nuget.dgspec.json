@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ASP Net Core Vuejs\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj": {}
+    "C:\\Users\\franc\\OneDrive\\Documentos\\DESAROLLO\\SistemaFarmacia\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj": {}
   },
   "projects": {
-    "C:\\ASP Net Core Vuejs\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj": {
+    "C:\\Users\\franc\\OneDrive\\Documentos\\DESAROLLO\\SistemaFarmacia\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ASP Net Core Vuejs\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj",
+        "projectUniqueName": "C:\\Users\\franc\\OneDrive\\Documentos\\DESAROLLO\\SistemaFarmacia\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj",
         "projectName": "Sistema.Datos",
-        "projectPath": "C:\\ASP Net Core Vuejs\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj",
-        "packagesPath": "C:\\Users\\JcarlosAd7\\.nuget\\packages\\",
-        "outputPath": "C:\\ASP Net Core Vuejs\\Sistema\\Sistema.Datos\\obj\\",
+        "projectPath": "C:\\Users\\franc\\OneDrive\\Documentos\\DESAROLLO\\SistemaFarmacia\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj",
+        "packagesPath": "C:\\Users\\franc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\franc\\OneDrive\\Documentos\\DESAROLLO\\SistemaFarmacia\\Sistema\\Sistema.Datos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\JcarlosAd7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\franc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,14 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\JcarlosAd7\\.dotnet\\NuGetFallbackFolder": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp2.1": {
+            "targetAlias": "netcoreapp2.1",
             "projectReferences": {
-              "C:\\ASP Net Core Vuejs\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj": {
-                "projectPath": "C:\\ASP Net Core Vuejs\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj"
+              "C:\\Users\\franc\\OneDrive\\Documentos\\DESAROLLO\\SistemaFarmacia\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj": {
+                "projectPath": "C:\\Users\\franc\\OneDrive\\Documentos\\DESAROLLO\\SistemaFarmacia\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj"
               }
             }
           }
@@ -45,6 +46,7 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
+          "targetAlias": "netcoreapp2.1",
           "dependencies": {
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -64,27 +66,34 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.206\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\ASP Net Core Vuejs\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj": {
+    "C:\\Users\\franc\\OneDrive\\Documentos\\DESAROLLO\\SistemaFarmacia\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ASP Net Core Vuejs\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\franc\\OneDrive\\Documentos\\DESAROLLO\\SistemaFarmacia\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj",
         "projectName": "Sistema.Entidades",
-        "projectPath": "C:\\ASP Net Core Vuejs\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj",
-        "packagesPath": "C:\\Users\\JcarlosAd7\\.nuget\\packages\\",
-        "outputPath": "C:\\ASP Net Core Vuejs\\Sistema\\Sistema.Entidades\\obj\\",
+        "projectPath": "C:\\Users\\franc\\OneDrive\\Documentos\\DESAROLLO\\SistemaFarmacia\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj",
+        "packagesPath": "C:\\Users\\franc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\franc\\OneDrive\\Documentos\\DESAROLLO\\SistemaFarmacia\\Sistema\\Sistema.Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\JcarlosAd7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\franc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,11 +101,11 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\JcarlosAd7\\.dotnet\\NuGetFallbackFolder": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp2.1": {
+            "targetAlias": "netcoreapp2.1",
             "projectReferences": {}
           }
         },
@@ -108,6 +117,7 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
+          "targetAlias": "netcoreapp2.1",
           "dependencies": {
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
@@ -117,10 +127,16 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.206\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -10,7 +10,6 @@
                     ></v-divider>
                     <v-spacer></v-spacer>
                     <v-text-field v-if="verNuevo==0" class="text-xs-center" v-model="search" append-icon="search" label="Búsqueda" single-line hide-details></v-text-field>
-                    <v-btn v-if="verNuevo==0" @click="listar()" color="primary" dark class="mb-2">Buscar</v-btn>
                     <v-spacer></v-spacer>
                     <v-btn v-if="verNuevo==0" @click="mostrarNuevo" color="primary" dark class="mb-2">Nuevo</v-btn>
                     <v-dialog v-model="verArticulos" max-width="1000px">
@@ -120,7 +119,6 @@
                     <td>{{ props.item.usuario }}</td>
                     <td>{{ props.item.proveedor}}</td>
                     <td>{{ props.item.tipo_comprobante }}</td>
-                    <td>{{ props.item.serie_comprobante }}</td>
                     <td>{{ props.item.num_comprobante }}</td>
                     <td>{{ props.item.fecha_hora }}</td>
                     <td>{{ props.item.impuesto }}</td>
@@ -140,16 +138,12 @@
             </v-data-table>
             <v-container grid-list-sm class="pa-4 white" v-if="verNuevo">
                 <v-layout row wrap>
-                    <v-flex xs12 sm4 md4 lg4 xl4>
+                    <v-flex xs12 sm6 md6 lg6 xl6>
                         <v-select v-model="tipo_comprobante" 
                         :items="comprobantes" label="Tipo Comprobante">
                         </v-select>
                     </v-flex>
-                    <v-flex xs12 sm4 md4 lg4 xl4>
-                        <v-text-field v-model="serie_comprobante" label="Serie Comprobante">
-                        </v-text-field>
-                    </v-flex>
-                    <v-flex xs12 sm4 md4 lg4 xl4>
+                    <v-flex xs12 sm6 md6 lg6 xl6>
                         <v-text-field v-model="num_comprobante" label="Número Comprobante">
                         </v-text-field>
                     </v-flex>
@@ -159,7 +153,7 @@
                         </v-select>
                     </v-flex>
                     <v-flex xs12 sm4 md4 lg4 xl4>
-                        <v-text-field type="number" v-model="impuesto" label="Impuesto">
+                        <v-text-field  type="number" v-model="impuesto" label="Impuesto">
                         </v-text-field>
                     </v-flex>
                     <v-flex xs12 sm8 md8 lg8 xl8>
@@ -236,10 +230,9 @@
                     { text: 'Usuario', value: 'usuario' },
                     { text: 'Proveedor', value: 'proveedor' },
                     { text: 'Tipo Comprobante', value: 'tipo_comprobante' },
-                    { text: 'Serie Comprobante', value: 'serie_comprobante', sortable: false  },
                     { text: 'Número Comprobante', value: 'num_comprobante', sortable: false  },
                     { text: 'Fecha', value: 'fecha_hora', sortable: false  },
-                    { text: 'Impuesto', value: 'impuesto', sortable: false  },
+                    { text: 'Impuesto (%)', value: 'impuesto', sortable: false  },
                     { text: 'Total', value: 'total', sortable: false  },
                     { text: 'Estado', value: 'estado', sortable: false  }                
                 ],
@@ -258,10 +251,10 @@
                 proveedores:[                   
                 ],
                 tipo_comprobante: '',
-                comprobantes: ['FACTURA','BOLETA','TICKET','GUIA'],
+                comprobantes: ['FACTURA','TICKET'],
                 serie_comprobante: '',
                 num_comprobante: '',
-                impuesto: 18,
+                impuesto: 15,
                 codigo:'',
                 verNuevo:0,
                 errorArticulo:null,
@@ -343,6 +336,7 @@
             },
             mostrarArticulos(){
                 this.verArticulos=1;
+                //this.listarArticulo();
             },
             ocultarArticulos(){
                 this.verArticulos=0;
@@ -510,22 +504,6 @@
             activarDesactivarCerrar(){
                 this.adModal=0;
             },
-            /*
-            activar(){
-                let me=this;
-                let header={"Authorization" : "Bearer " + this.$store.state.token};
-                let configuracion= {headers : header};
-                axios.put('api/Usuarios/Activar/'+this.adId,{},configuracion).then(function(response){
-                    me.adModal=0;
-                    me.adAccion=0;
-                    me.adNombre="";
-                    me.adId="";
-                    me.listar();                       
-                }).catch(function(error){
-                    console.log(error);
-                });
-            },
-            */
             desactivar(){
                 let me=this;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};

@@ -225,7 +225,6 @@ CREATE TABLE [dbo].[venta](
 	[idcliente] [int] NOT NULL,
 	[idusuario] [int] NOT NULL,
 	[tipo_comprobante] [varchar](20) NOT NULL,
-	[serie_comprobante] [varchar](7) NULL,
 	[num_comprobante] [varchar](10) NOT NULL,
 	[fecha_hora] [datetime] NOT NULL,
 	[impuesto] [decimal](4, 2) NOT NULL,
