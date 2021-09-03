@@ -6,3 +6,13 @@ Sistema realizado en :
 - Vuetify
 - .Net core (Web api)
 - Sql Server
+
+
+
+******PENDIENTE
+
+1- Modificar demas ventanas.
+2- Corregir boot's de msj de errores .
+3- Corregir error de mostrar productos no solo seleccionar.
+4- Agregar barcode en producto.
+6- Modificar Parte usuario y roles.
