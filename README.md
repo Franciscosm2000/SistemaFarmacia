@@ -16,3 +16,5 @@ Sistema realizado en :
 3- Corregir error de mostrar productos no solo seleccionar.
 4- Agregar barcode en producto.
 6- Modificar Parte usuario y roles.
+
+********  {USUARIO: admin@admin , CLAVE: admin } 
