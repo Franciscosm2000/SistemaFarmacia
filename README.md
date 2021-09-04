@@ -16,5 +16,6 @@ Sistema realizado en :
 3- Corregir error de mostrar productos no solo seleccionar.
 4- Agregar barcode en producto.
 6- Modificar Parte usuario y roles.
+7- Token no avisa vencimiento.
 
 ********  {USUARIO: admin@admin , CLAVE: admin } 
