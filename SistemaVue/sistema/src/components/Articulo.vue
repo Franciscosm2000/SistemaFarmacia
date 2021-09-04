@@ -25,7 +25,11 @@
                                 <v-flex xs6 sm6 md6>
                                     <v-text-field v-model="codigo" label="Código">
                                     </v-text-field>
+                                    <barcode v-bind:value="codigo">
+                                        Código de barra.
+                                    </barcode>
                                 </v-flex>
+                                
                                 <v-flex xs6 sm6 md6>
                                     <v-select v-model="idcategoria"
                                     :items="categorias" label="Categoría">
@@ -143,7 +147,8 @@
 <script>
     import axios from 'axios'
     import jsPDF from 'jspdf'
-    import autoTable from 'jspdf-autotable';
+    import VueBarcode from 'vue-barcode';
+
     export default {
         data(){
             return {
@@ -182,6 +187,9 @@
             formTitle () {
                 return this.editedIndex === -1 ? 'Nuevo artículo' : 'Actualizar artículo'
             }
+        },
+        components:{
+            'barcode': VueBarcode
         },
 
         watch: {

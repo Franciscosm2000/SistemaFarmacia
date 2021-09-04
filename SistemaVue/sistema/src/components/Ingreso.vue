@@ -23,13 +23,13 @@
                                         <v-flex xs12 sm12 md12 lg12 xl12>
                                             <v-text-field append-icon="search" 
                                             class="text-xs-center" v-model="texto"
-                                            label="Ingrese artículo a buscar" @keyup.enter="listarArticulo()">
-
+                                            label="Ingrese artículo a buscar" single-line hide-details>
                                             </v-text-field>
                                             <template>
                                                <v-data-table
                                                     :headers="cabeceraArticulos"
                                                     :items="articulos"
+                                                    :search="texto"
                                                     class="elevation-1"
                                                 >
                                                     <template slot="items" slot-scope="props">
@@ -159,6 +159,9 @@
                     <v-flex xs12 sm8 md8 lg8 xl8>
                         <v-text-field @keyup.enter="buscarCodigo()" v-model="codigo" label="Código">
                         </v-text-field>
+                        <barcode v-bind:value="codigo">
+                            Código de barra.
+                        </barcode>
                     </v-flex>
                     <v-flex xs12 sm2 md2 lg2 xl2>
                         <v-btn @click="mostrarArticulos()" small fab dark color="teal">
@@ -220,6 +223,7 @@
 </template>
 <script>
     import axios from 'axios'
+     import VueBarcode from 'vue-barcode';
     export default {
         data(){
             return {
@@ -251,7 +255,7 @@
                 proveedores:[                   
                 ],
                 tipo_comprobante: '',
-                comprobantes: ['FACTURA','TICKET'],
+                comprobantes: ['FACTURA','OTRO'],
                 serie_comprobante: '',
                 num_comprobante: '',
                 impuesto: 15,
@@ -296,7 +300,9 @@
             val || this.close()
             }
         },
-
+        components:{
+             'barcode': VueBarcode
+        },
         created () {
             this.listar();
             this.select();
@@ -310,6 +316,10 @@
                 this.limpiar();
             },
             buscarCodigo(){
+
+                if(this.codigo === null || this.codigo === '')
+                    return;
+
                 let me=this;
                 me.errorArticulo=null;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
@@ -318,6 +328,7 @@
                 .then(function(response){
                     //console.log(response);
                     me.agregarDetalle(response.data);
+                    me.codigo = '';
                 }).catch(function(error){
                     console.log(error);
                     me.errorArticulo='No existe el artículo';
@@ -327,7 +338,7 @@
                 let me=this;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
-                axios.get('api/Articulos/ListarIngreso/'+me.texto,configuracion).then(function(response){
+                axios.get('api/Articulos/Listar',configuracion).then(function(response){
                     //console.log(response);
                     me.articulos=response.data;
                 }).catch(function(error){
@@ -336,7 +347,7 @@
             },
             mostrarArticulos(){
                 this.verArticulos=1;
-                //this.listarArticulo();
+                this.listarArticulo();
             },
             ocultarArticulos(){
                 this.verArticulos=0;
