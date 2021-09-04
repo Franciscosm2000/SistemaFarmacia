@@ -10,7 +10,6 @@
                     ></v-divider>
                     <v-spacer></v-spacer>
                     <v-text-field v-if="verNuevo==0" class="text-xs-center" v-model="search" append-icon="search" label="Búsqueda" single-line hide-details></v-text-field>
-                    <v-btn v-if="verNuevo==0" @click="listar()" color="primary" dark class="mb-2">Buscar</v-btn>
                     <v-spacer></v-spacer>
                     <v-btn v-if="verNuevo==0" @click="mostrarNuevo" color="primary" dark class="mb-2">Nuevo</v-btn>
                     <v-dialog v-model="verArticulos" max-width="1000px">
@@ -31,6 +30,7 @@
                                                <v-data-table
                                                     :headers="cabeceraArticulos"
                                                     :items="articulos"
+                                                    :search="texto"
                                                     class="elevation-1"
                                                 >
                                                     <template slot="items" slot-scope="props">
@@ -107,7 +107,7 @@
                                         </div>
                                         <div id="fact">
                                             <p>{{tipo_comprobante}}<br>
-                                            {{serie_comprobante}}-{{num_comprobante}}<br>
+                                            {{num_comprobante}}<br>
                                             {{fecha_hora}}</p>
                                         </div>
                                     </header>
@@ -225,7 +225,6 @@
                     <td>{{ props.item.usuario }}</td>
                     <td>{{ props.item.cliente}}</td>
                     <td>{{ props.item.tipo_comprobante }}</td>
-                    <td>{{ props.item.serie_comprobante }}</td>
                     <td>{{ props.item.num_comprobante }}</td>
                     <td>{{ props.item.fecha_hora }}</td>
                     <td>{{ props.item.impuesto }}</td>
@@ -245,16 +244,12 @@
             </v-data-table>
             <v-container grid-list-sm class="pa-4 white" v-if="verNuevo">
                 <v-layout row wrap>
-                    <v-flex xs12 sm4 md4 lg4 xl4>
+                    <v-flex xs12 sm6 md6 lg6 xl6>
                         <v-select v-model="tipo_comprobante" 
                         :items="comprobantes" label="Tipo Comprobante">
                         </v-select>
                     </v-flex>
-                    <v-flex xs12 sm4 md4 lg4 xl4>
-                        <v-text-field v-model="serie_comprobante" label="Serie Comprobante">
-                        </v-text-field>
-                    </v-flex>
-                    <v-flex xs12 sm4 md4 lg4 xl4>
+                    <v-flex xs12 sm6 md6 lg6 xl6>
                         <v-text-field v-model="num_comprobante" label="Número Comprobante">
                         </v-text-field>
                     </v-flex>
@@ -270,6 +265,9 @@
                     <v-flex xs12 sm8 md8 lg8 xl8>
                         <v-text-field @keyup.enter="buscarCodigo()" v-model="codigo" label="Código">
                         </v-text-field>
+                        <barcode v-bind:value="codigo">
+                            Código de barra.
+                        </barcode>
                     </v-flex>
                     <v-flex xs12 sm2 md2 lg2 xl2>
                         <v-btn @click="mostrarArticulos()" small fab dark color="teal">
@@ -334,6 +332,8 @@
     import axios from 'axios'
     import jsPDF from 'jspdf'
     import html2canvas from 'html2canvas';
+    import VueBarcode from 'vue-barcode';
+
     export default {
         data(){
             return {
@@ -344,7 +344,6 @@
                     { text: 'Usuario', value: 'usuario' },
                     { text: 'Cliente', value: 'cliente' },
                     { text: 'Tipo Comprobante', value: 'tipo_comprobante' },
-                    { text: 'Serie Comprobante', value: 'serie_comprobante', sortable: false  },
                     { text: 'Número Comprobante', value: 'num_comprobante', sortable: false  },
                     { text: 'Fecha', value: 'fecha_hora', sortable: false  },
                     { text: 'Impuesto', value: 'impuesto', sortable: false  },
@@ -367,10 +366,9 @@
                 clientes:[                   
                 ],
                 tipo_comprobante: '',
-                comprobantes: ['FACTURA','BOLETA','TICKET','GUIA'],
-                serie_comprobante: '',
+                comprobantes: ['FACTURA','OTRO'],
                 num_comprobante: '',
-                impuesto: 18,
+                impuesto: 15,
                 codigo:'',
                 verNuevo:0,
                 errorArticulo:null,
@@ -419,7 +417,9 @@
             val || this.close()
             }
         },
-
+        components:{
+             'barcode': VueBarcode
+        },
         created () {
             this.listar();
             this.select();
@@ -443,7 +443,6 @@
             mostrarComprobante(item){
                 this.limpiar();
                 this.tipo_comprobante=item.tipo_comprobante;
-                this.serie_comprobante=item.serie_comprobante;
                 this.num_comprobante=item.num_comprobante;
                 this.cliente=item.cliente;
                 this.num_documento=item.num_documento;
@@ -467,6 +466,10 @@
                 this.limpiar();
             },
             buscarCodigo(){
+                
+                if(this.codigo === null || this.codigo === '')
+                    return;
+
                 let me=this;
                 me.errorArticulo=null;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
@@ -475,6 +478,7 @@
                 .then(function(response){
                     //console.log(response);
                     me.agregarDetalle(response.data);
+                    me.codigo = '';
                 }).catch(function(error){
                     console.log(error);
                     me.errorArticulo='No existe el artículo';
@@ -484,7 +488,7 @@
                 let me=this;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
-                axios.get('api/Articulos/ListarVenta/'+me.texto,configuracion).then(function(response){
+                axios.get('api/Articulos/Listar',configuracion).then(function(response){
                     //console.log(response);
                     me.articulos=response.data;
                 }).catch(function(error){
@@ -493,6 +497,7 @@
             },
             mostrarArticulos(){
                 this.verArticulos=1;
+                this.listarArticulo();
             },
             ocultarArticulos(){
                 this.verArticulos=0;
@@ -560,7 +565,6 @@
             verDetalles(item){
                 this.limpiar();
                 this.tipo_comprobante=item.tipo_comprobante;
-                this.serie_comprobante=item.serie_comprobante;
                 this.num_comprobante=item.num_comprobante;
                 this.idcliente=item.idcliente;
                 this.impuesto=item.impuesto;
@@ -586,7 +590,6 @@
                 this.id="";
                 this.idcliente="";
                 this.tipo_comprobante="";
-                this.serie_comprobante="";
                 this.num_comprobante="";
                 this.impuesto="18";
                 this.codigo="";
@@ -607,7 +610,6 @@
                     'idcliente':me.idcliente,
                     'idusuario':me.$store.state.usuario.idusuario,
                     'tipo_comprobante': me.tipo_comprobante,
-                    'serie_comprobante': me.serie_comprobante,
                     'num_comprobante':me.num_comprobante,
                     'impuesto': me.impuesto,
                     'total':me.total,
