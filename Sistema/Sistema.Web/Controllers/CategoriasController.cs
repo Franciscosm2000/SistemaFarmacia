@@ -85,14 +85,14 @@ namespace Sistema.Web.Controllers
 
             if (model.idcategoria <= 0)
             {
-                return BadRequest();
+                return BadRequest("Error de id categoria.");
             }
 
             var categoria = await _context.Categorias.FirstOrDefaultAsync(c => c.idcategoria == model.idcategoria);
 
             if (categoria == null)
             {
-                return NotFound();
+                return NotFound("Categoria no encontrada.");
             }
 
             categoria.nombre = model.nombre;
@@ -102,10 +102,10 @@ namespace Sistema.Web.Controllers
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
                 // Guardar Excepción
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
             return Ok();
@@ -134,7 +134,7 @@ namespace Sistema.Web.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
 
             return Ok();
@@ -152,7 +152,7 @@ namespace Sistema.Web.Controllers
             var categoria = await _context.Categorias.FindAsync(id);
             if (categoria == null)
             {
-                return NotFound();
+                return NotFound("Categoria no encontrada");
             }
 
             _context.Categorias.Remove(categoria);
@@ -162,7 +162,7 @@ namespace Sistema.Web.Controllers
             }
             catch(Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }           
 
             return Ok(categoria);
@@ -175,7 +175,7 @@ namespace Sistema.Web.Controllers
 
             if (id <= 0)
             {
-                return BadRequest();
+                return BadRequest("Error de id categoria.");
             }
 
             var categoria = await _context.Categorias.FirstOrDefaultAsync(c => c.idcategoria == id);
@@ -191,10 +191,10 @@ namespace Sistema.Web.Controllers
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
                 // Guardar Excepción
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
             return Ok();
@@ -207,14 +207,14 @@ namespace Sistema.Web.Controllers
 
             if (id <= 0)
             {
-                return BadRequest();
+                return BadRequest("Error de id categoria.");
             }
 
             var categoria = await _context.Categorias.FirstOrDefaultAsync(c => c.idcategoria == id);
 
             if (categoria == null)
             {
-                return NotFound();
+                return NotFound("Categoria no encontrada.");
             }
 
             categoria.condicion = true;
@@ -223,10 +223,10 @@ namespace Sistema.Web.Controllers
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
                 // Guardar Excepción
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
             return Ok();

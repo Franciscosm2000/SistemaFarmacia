@@ -15,7 +15,6 @@ namespace Sistema.Entidades.Ventas
         public int idusuario { get; set; }
         [Required]
         public string tipo_comprobante { get; set; }
-        public string serie_comprobante { get; set; }
         [Required]
         public string num_comprobante { get; set; }
         [Required]

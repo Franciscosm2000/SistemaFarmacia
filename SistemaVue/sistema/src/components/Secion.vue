@@ -87,10 +87,11 @@
                 this.$store.dispatch("salir");
             },
             reanudar(){
+                alert(this.$store.state.email)
                this.dialog = false;
               // prompt('Clave del usuario '+ this.$store.state.usuario.usuario)
                var b= this.password;
-                axios.post('api/Usuarios/Login', {usuario: this.$store.state.usuario.usuario, password: b})
+                axios.post('api/Usuarios/Login', {email: this.$store.state.usuario.email, password: b})
                 .then(respuesta => {
                     return respuesta.data
                 })

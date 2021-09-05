@@ -131,7 +131,7 @@ namespace Sistema.Web.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
 
             return Ok();
@@ -149,14 +149,14 @@ namespace Sistema.Web.Controllers
 
             if (model.idpersona <= 0)
             {
-                return BadRequest();
+                return BadRequest("Error de id persona.");
             }
 
             var persona = await _context.Personas.FirstOrDefaultAsync(p => p.idpersona == model.idpersona);
 
             if (persona == null)
             {
-                return NotFound();
+                return NotFound("Persona no encontrada.");
             }
 
             persona.tipo_persona = model.tipo_persona;
@@ -171,10 +171,10 @@ namespace Sistema.Web.Controllers
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
                 // Guardar Excepción
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
             return Ok();

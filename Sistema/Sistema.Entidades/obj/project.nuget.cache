@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "G8srYoPwnq7dB9Zr2sCB9F3j9vYmED39DYtCB5PhmM2smuzK8cTQ5HAiyq000avw6danmJqvOuA77elUx4s39g==",
+  "dgSpecHash": "5zVgaSsg1aykLDpMWRdcJTAuoGT0X2Afj1YjZdTxD548X51WzoMGON+1xxx5aQDHfuiJd/1tFWY4dvuVYC8WQA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\franc\\OneDrive\\Documentos\\DESAROLLO\\SistemaFarmacia\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj",
+  "projectFilePath": "C:\\Users\\franc\\OneDrive\\Escritorio\\Nueva carpeta\\SistemaFarmacia\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\franc\\.nuget\\packages\\microsoft.netcore.app\\2.1.0\\microsoft.netcore.app.2.1.0.nupkg.sha512",
     "C:\\Users\\franc\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.1.0\\microsoft.netcore.dotnetapphost.2.1.0.nupkg.sha512",

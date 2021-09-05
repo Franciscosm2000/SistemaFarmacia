@@ -8,7 +8,7 @@
                     </v-toolbar-title>
                 </v-toolbar>
                 <v-card-text>
-                    <v-text-field v-model="email" autofocus color="accent" label="Email" required>
+                    <v-text-field v-model="email" autofocus color="accent" label="Usuario" required>
                     </v-text-field>
                     <v-text-field v-model="password" type="password" color="accent" label="Password" required>
                     </v-text-field>

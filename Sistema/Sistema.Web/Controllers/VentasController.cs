@@ -47,7 +47,6 @@ namespace Sistema.Web.Controllers
                 idusuario = v.idusuario,
                 usuario = v.usuario.nombre,
                 tipo_comprobante = v.tipo_comprobante,
-                serie_comprobante = v.serie_comprobante,
                 num_comprobante = v.num_comprobante,
                 fecha_hora = v.fecha_hora,
                 impuesto = v.impuesto,
@@ -102,7 +101,6 @@ namespace Sistema.Web.Controllers
                 idusuario = v.idusuario,
                 usuario = v.usuario.nombre,
                 tipo_comprobante = v.tipo_comprobante,
-                serie_comprobante = v.serie_comprobante,
                 num_comprobante = v.num_comprobante,
                 fecha_hora = v.fecha_hora,
                 impuesto = v.impuesto,
@@ -138,7 +136,6 @@ namespace Sistema.Web.Controllers
                 idusuario = v.idusuario,
                 usuario = v.usuario.nombre,
                 tipo_comprobante = v.tipo_comprobante,
-                serie_comprobante = v.serie_comprobante,
                 num_comprobante = v.num_comprobante,
                 fecha_hora = v.fecha_hora,
                 impuesto = v.impuesto,
@@ -185,7 +182,6 @@ namespace Sistema.Web.Controllers
                 idcliente = model.idcliente,
                 idusuario = model.idusuario,
                 tipo_comprobante = model.tipo_comprobante,
-                serie_comprobante = model.serie_comprobante,
                 num_comprobante = model.num_comprobante,
                 fecha_hora = fechaHora,
                 impuesto = model.impuesto,
@@ -216,7 +212,7 @@ namespace Sistema.Web.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
 
             return Ok();
@@ -230,14 +226,14 @@ namespace Sistema.Web.Controllers
 
             if (id <= 0)
             {
-                return BadRequest();
+                return BadRequest("Error id venta.");
             }
 
             var venta = await _context.Ventas.FirstOrDefaultAsync(v => v.idventa == id);
 
             if (venta == null)
             {
-                return NotFound();
+                return NotFound("Venta no encontrada.");
             }
 
             venta.estado = "Anulado";
@@ -260,10 +256,10 @@ namespace Sistema.Web.Controllers
                 }
                 // Fin del código para devolver stock
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
                 // Guardar Excepción
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
             return Ok();

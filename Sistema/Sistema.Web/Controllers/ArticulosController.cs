@@ -198,14 +198,14 @@ namespace Sistema.Web.Controllers
 
             if (model.idarticulo <= 0)
             {
-                return BadRequest();
+                return BadRequest("Error de id articulo.");
             }
 
             var articulo = await _context.Articulos.FirstOrDefaultAsync(a => a.idarticulo == model.idarticulo);
 
             if (articulo == null)
             {
-                return NotFound();
+                return NotFound("Articulo no encontrado.");
             }
 
             articulo.idcategoria = model.idcategoria;
@@ -219,10 +219,10 @@ namespace Sistema.Web.Controllers
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
                 // Guardar Excepción
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
             return Ok();
@@ -256,7 +256,7 @@ namespace Sistema.Web.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
 
             return Ok();
@@ -270,14 +270,14 @@ namespace Sistema.Web.Controllers
 
             if (id <= 0)
             {
-                return BadRequest();
+                return BadRequest("Error de id articulo");
             }
 
             var articulo = await _context.Articulos.FirstOrDefaultAsync(a => a.idarticulo == id);
 
             if (articulo == null)
             {
-                return NotFound();
+                return NotFound("Articulo no encontrado.");
             }
 
             articulo.condicion = false;
@@ -286,10 +286,10 @@ namespace Sistema.Web.Controllers
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
                 // Guardar Excepción
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
             return Ok();
@@ -303,14 +303,14 @@ namespace Sistema.Web.Controllers
 
             if (id <= 0)
             {
-                return BadRequest();
+                return BadRequest("Error de id articulo.");
             }
 
             var articulo = await _context.Articulos.FirstOrDefaultAsync(a => a.idarticulo == id);
 
             if (articulo == null)
             {
-                return NotFound();
+                return NotFound("Articulo no encontrado");
             }
 
             articulo.condicion = true;
@@ -319,10 +319,10 @@ namespace Sistema.Web.Controllers
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
                 // Guardar Excepción
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
             return Ok();

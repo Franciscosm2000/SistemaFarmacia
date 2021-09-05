@@ -82,8 +82,6 @@ namespace Sistema.Web.Controllers
 
         }
 
-
-
         // GET: api/Ingresos/ListarDetalles
         [Authorize(Roles = "Almacenero,Administrador")]
         [HttpGet("[action]/{idingreso}")]
@@ -148,7 +146,7 @@ namespace Sistema.Web.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
 
             return Ok();
@@ -162,14 +160,14 @@ namespace Sistema.Web.Controllers
 
             if (id <= 0)
             {
-                return BadRequest();
+                return BadRequest("Error de id ingreso.");
             }
 
             var ingreso = await _context.Ingresos.FirstOrDefaultAsync(c=>c.idingreso == id);
 
             if (ingreso == null)
             {
-                return NotFound();
+                return NotFound("Ingreso no encontrado.");
             }
 
             ingreso.estado = "Anulado";
@@ -194,10 +192,10 @@ namespace Sistema.Web.Controllers
                 // Fin del código para devolver stock
 
                 }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
                 // Guardar Excepción
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
             return Ok();

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bPArVO1BbiKcK5CRVt3MNoOiueKGB1HWeA0DvJs8mjMh4WMNw6+h/+T7wH6uslhSPIgsJOahySp47Fhr75heEQ==",
+  "dgSpecHash": "r05M+jmS54YeYyASYha0dtNpO2AJR8f43/Y2niX0pf7kBmmcD3gq2SeJQR0WVj1o+GwpMmvLOIRBYRZLA+14Rw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\franc\\OneDrive\\Documentos\\DESAROLLO\\SistemaFarmacia\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj",
+  "projectFilePath": "C:\\Users\\franc\\OneDrive\\Escritorio\\Nueva carpeta\\SistemaFarmacia\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\franc\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\franc\\.nuget\\packages\\microsoft.entityframeworkcore\\2.1.2\\microsoft.entityframeworkcore.2.1.2.nupkg.sha512",

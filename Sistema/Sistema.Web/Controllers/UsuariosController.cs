@@ -94,7 +94,7 @@ namespace Sistema.Web.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
 
             return Ok();
@@ -113,14 +113,14 @@ namespace Sistema.Web.Controllers
 
             if (model.idusuario <= 0)
             {
-                return BadRequest();
+                return BadRequest("Error de id usuario.");
             }
 
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.idusuario == model.idusuario);
 
             if (usuario == null)
             {
-                return NotFound();
+                return NotFound("Usuario no encontrado");
             }
 
             usuario.idrol = model.idrol;
@@ -142,10 +142,10 @@ namespace Sistema.Web.Controllers
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
                 // Guardar Excepción
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
             return Ok();
@@ -169,14 +169,14 @@ namespace Sistema.Web.Controllers
 
             if (id <= 0)
             {
-                return BadRequest();
+                return BadRequest("Error de id usuario.");
             }
 
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.idusuario == id);
 
             if (usuario == null)
             {
-                return NotFound();
+                return NotFound("Usuario no encontrado.");
             }
 
             usuario.condicion = false;
@@ -185,10 +185,10 @@ namespace Sistema.Web.Controllers
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
                 // Guardar Excepción
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
             return Ok();
@@ -202,14 +202,14 @@ namespace Sistema.Web.Controllers
 
             if (id <= 0)
             {
-                return BadRequest();
+                return BadRequest("Error de id usuario.");
             }
 
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.idusuario == id);
 
             if (usuario == null)
             {
-                return NotFound();
+                return NotFound("Usuario no encontrado.");
             }
 
             usuario.condicion = true;
@@ -218,10 +218,10 @@ namespace Sistema.Web.Controllers
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
                 // Guardar Excepción
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
             return Ok();
@@ -237,12 +237,12 @@ namespace Sistema.Web.Controllers
 
             if (usuario == null)
             {
-                return NotFound();
+                return NotFound("Usuario no encontrado.");
             }
 
             if (!VerificarPasswordHash(model.password,usuario.password_hash,usuario.password_salt))
             {
-                return NotFound();
+                return NotFound("Errro de credenciales.");
             }
 
             var claims = new List<Claim>
@@ -252,7 +252,8 @@ namespace Sistema.Web.Controllers
                 new Claim(ClaimTypes.Role, usuario.rol.nombre ),
                 new Claim("idusuario", usuario.idusuario.ToString() ),
                 new Claim("rol", usuario.rol.nombre ),
-                new Claim("nombre", usuario.nombre )
+                new Claim("nombre", usuario.nombre ),
+                new Claim("email", usuario.email.ToString())
             };
 
             return Ok(
