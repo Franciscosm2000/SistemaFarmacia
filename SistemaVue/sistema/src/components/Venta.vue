@@ -686,8 +686,9 @@
                 this.idcliente="";
                 this.tipo_comprobante="";
                 this.num_comprobante="";
-                this.impuesto="18";
+                this.impuesto="15";
                 this.codigo="";
+                this.validaMensaje = [];
                 this.detalles=[];
                 this.total=0;
                 this.totalImpuesto=0;

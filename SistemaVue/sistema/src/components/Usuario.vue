@@ -21,6 +21,11 @@
                             <v-card-text>
                             <v-container grid-list-md>
                                 <v-layout wrap>
+                                <v-flex xs12 sm12 md12 >
+                                    <v-text-field v-model="email" label="Usuario"  prepend-icon="person">
+                                    </v-text-field>
+                                </v-flex>
+
                                 <v-flex xs12 sm6 md6>
                                     <v-text-field v-model="nombre" label="Nombre">
                                     </v-text-field>
@@ -44,15 +49,11 @@
                                     </v-text-field>
                                 </v-flex>
                                 <v-flex xs12 sm6 md6>
-                                    <v-text-field v-model="telefono" label="Teléfono">
+                                    <v-text-field mask="(###) ####-####" v-model="telefono" label="Teléfono">
                                     </v-text-field>
                                 </v-flex>
                                 <v-flex xs12 sm6 md6>
-                                    <v-text-field v-model="email" label="Email">
-                                    </v-text-field>
-                                </v-flex>
-                                <v-flex xs12 sm6 md6>
-                                    <v-text-field type="password" v-model="password" label="Password">
+                                    <v-text-field v-model="password" label="Password"  @click:append="show2 = !show2"  :append-icon="show2 ? 'visibility' : 'visibility_off'" :type="show2 ? 'text' : 'password'">
                                     </v-text-field>
                                 </v-flex>
                                 <v-flex xs12 sm12 md12 v-show="valida">
@@ -187,7 +188,7 @@
                 ],
                 nombre:'',
                 tipo_documento: '',
-                documentos: ['DNI','RUC','PASAPORTE','CEDULA'],
+                documentos: ['CEDULA','OTRO'],
                 num_documento: '',
                 direccion: '',
                 telefono: '',
@@ -200,7 +201,13 @@
                 adModal: 0,
                 adAccion: 0,
                 adNombre: '',
-                adId: ''             
+                adId: '',
+                login_:false,
+                tipoMsj:'',
+                msjError:'',
+                activarError:false,     
+                carga:false,             
+                show2: false,   
             }
         },
         computed: {
@@ -323,6 +330,7 @@
                 this.email="";
                 this.password="";
                 this.passwordAnt="";
+                this.validaMensaje = [];
                 this.actPassword=false;
                 this.editedIndex=-1;
             },

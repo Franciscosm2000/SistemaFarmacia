@@ -10,7 +10,7 @@
                 <v-card-text>
                     <v-text-field v-model="email" autofocus color="accent" label="Usuario" required>
                     </v-text-field>
-                    <v-text-field v-model="password" type="password" color="accent" label="Password" required>
+                    <v-text-field v-model="password" @click:append="show2 = !show2"  :append-icon="show2 ? 'visibility' : 'visibility_off'" :type="show2 ? 'text' : 'password'" color="accent" label="Password" required>
                     </v-text-field>
                     <v-flex class="red--text" v-if="error">
                         {{error}}
@@ -32,7 +32,8 @@ export default {
         return {
             email: '',
             password: '',
-            error: null
+            error: null,
+            show2:false
         }
     },
     methods :{

@@ -229,6 +229,7 @@
                 this.direccion="";
                 this.telefono="";
                 this.email="";
+                this.validaMensaje();
                 this.editedIndex=-1;
             },
             guardar () {

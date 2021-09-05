@@ -12,7 +12,7 @@
                     <v-spacer></v-spacer>
                     <v-text-field class="text-xs-center" v-model="search" append-icon="search" label="Búsqueda" single-line hide-details></v-text-field>
                     <v-spacer></v-spacer>
-                    <v-dialog v-model="dialog" max-width="500px">
+                    <v-dialog v-model="dialog" max-width="500px" persistent>
                         <v-btn slot="activator" color="primary" dark class="mb-2">Nuevo</v-btn>
                         <v-card>
                             <v-card-title>
@@ -64,7 +64,7 @@
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
-                    <v-dialog v-model="adModal" max-width="290">
+                    <v-dialog v-model="adModal" max-width="290" persistent>
                         <v-card>
                             <v-card-title class="headline" v-if="adAccion==1">¿Activar Item?</v-card-title>
                             <v-card-title class="headline" v-if="adAccion==2">¿Desactivar Item?</v-card-title>
@@ -89,7 +89,7 @@
 
                         </v-card>
                     </v-dialog>
-                </v-toolbar>
+            </v-toolbar>
             <v-data-table
                 :headers="headers"
                 :items="articulos"
@@ -338,6 +338,7 @@
                 this.stock="";
                 this.precio_venta="";
                 this.descripcion="";
+                this.validaMensaje=[];
                 this.editedIndex=-1;
             },
             guardar () {
@@ -414,6 +415,9 @@
 
                 if (this.nombre.length<3 || this.nombre.length>50){
                     this.validaMensaje.push("El nombre debe tener más de 3 caracteres y menos de 50 caracteres.");
+                }
+                if(!this.codigo){
+                    this.validaMensaje.push("El código es obligatorio.");
                 }
                 if (!this.idcategoria){
                     this.validaMensaje.push("Seleccione una categoría.");

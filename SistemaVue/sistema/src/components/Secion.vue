@@ -87,7 +87,6 @@
                 this.$store.dispatch("salir");
             },
             reanudar(){
-                alert(this.$store.state.email)
                this.dialog = false;
               // prompt('Clave del usuario '+ this.$store.state.usuario.usuario)
                var b= this.password;

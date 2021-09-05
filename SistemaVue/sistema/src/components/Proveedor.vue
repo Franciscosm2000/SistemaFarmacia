@@ -234,6 +234,7 @@
                 this.telefono="";
                 this.email="";
                 this.password="";
+                this.validaMensaje = [];
                 this.editedIndex=-1;
             },
             guardar () {

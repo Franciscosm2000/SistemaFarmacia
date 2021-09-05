@@ -541,12 +541,13 @@
                 this.tipo_comprobante="";
                 this.serie_comprobante="";
                 this.num_comprobante="";
-                this.impuesto="18";
+                this.impuesto="15";
                 this.codigo="";
                 this.detalles=[];
                 this.total=0;
                 this.totalImpuesto=0;
                 this.totalParcial=0;
+                this.validaMensaje = [];
                 this.verDet=0;
             },
             guardar () {

@@ -14,7 +14,6 @@ namespace Sistema.Web.Models.Usuarios.Usuario
         public string direccion { get; set; }
         public string telefono { get; set; }
         [Required]
-        [EmailAddress]
         public string email { get; set; }
         [Required]
         public string password { get; set; }

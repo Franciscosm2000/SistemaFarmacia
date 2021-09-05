@@ -95,6 +95,12 @@ namespace Sistema.Web.Controllers
                 return NotFound("Categoria no encontrada.");
             }
 
+            var datos = await _context.Categorias.Where(a=> a.nombre.ToUpper() == categoria.nombre.ToUpper() ).ToListAsync();
+
+            if (datos.Count > 1) {
+                return BadRequest("La categoria ya existe.");
+            }
+
             categoria.nombre = model.nombre;
             categoria.descripcion = model.descripcion;
 
@@ -118,6 +124,12 @@ namespace Sistema.Web.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            var x = await _context.Categorias.Where(c=> c.nombre.ToUpper() == model.nombre.ToUpper()).ToListAsync();
+
+            if (x != null) {
+                return BadRequest("La categoria ya existe");
             }
 
             Categoria categoria = new Categoria
