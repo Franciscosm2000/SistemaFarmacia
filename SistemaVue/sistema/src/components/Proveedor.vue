@@ -11,7 +11,7 @@
                     <v-spacer></v-spacer>
                     <v-text-field class="text-xs-center" v-model="search" append-icon="search" label="Búsqueda" single-line hide-details></v-text-field>
                     <v-spacer></v-spacer>
-                    <v-dialog v-model="dialog" max-width="500px">
+                    <v-dialog v-model="dialog" max-width="500px" persistent>
                         <v-btn slot="activator" color="primary" dark class="mb-2">Nuevo</v-btn>
                         <v-card>
                             <v-card-title>

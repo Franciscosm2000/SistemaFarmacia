@@ -12,7 +12,7 @@
                     <v-text-field v-if="verNuevo==0" class="text-xs-center" v-model="search" append-icon="search" label="Búsqueda" single-line hide-details></v-text-field>
                     <v-spacer></v-spacer>
                     <v-btn v-if="verNuevo==0" @click="mostrarNuevo" color="primary" dark class="mb-2">Nuevo</v-btn>
-                    <v-dialog v-model="verArticulos" max-width="1000px">
+                    <v-dialog v-model="verArticulos" max-width="1000px" persistent>
                         <v-card>
                             <v-card-title>
                                 <span class="headline">Seleccione un artículo</span>
@@ -66,7 +66,7 @@
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
-                    <v-dialog v-model="adModal" max-width="290px">
+                    <v-dialog v-model="adModal" max-width="290px" persistent>
                         <v-card>
                             <v-card-title class="headline" v-if="adAccion==1">¿Activar Item?</v-card-title>
                             <v-card-title class="headline" v-if="adAccion==2">¿Anular Venta?</v-card-title>
@@ -91,7 +91,7 @@
 
                         </v-card>
                     </v-dialog>
-                    <v-dialog v-model="comprobanteModal" max-width="1000px">
+                    <v-dialog v-model="comprobanteModal" max-width="1000px" persistent>
                         <v-card>
                             <v-card-text>
                                 <v-btn @click="crearPDF()"><v-icon>print</v-icon></v-btn>
@@ -163,7 +163,7 @@
                                                         <th></th>
                                                         <th></th>
                                                         <th></th>
-                                                        <th style="text-align:right;">IGV ({{impuesto}}%)</th>
+                                                        <th style="text-align:right;">IVA ({{impuesto}}%)</th>
                                                         <th style="text-align:right;">$ {{totalImpuesto=((total*impuesto)/(100+impuesto)).toFixed(2)}}</th>
                                                     </tr>
                                                     <tr>

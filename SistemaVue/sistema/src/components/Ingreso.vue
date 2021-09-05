@@ -12,7 +12,7 @@
                     <v-text-field v-if="verNuevo==0" class="text-xs-center" v-model="search" append-icon="search" label="Búsqueda" single-line hide-details></v-text-field>
                     <v-spacer></v-spacer>
                     <v-btn v-if="verNuevo==0" @click="mostrarNuevo" color="primary" dark class="mb-2">Nuevo</v-btn>
-                    <v-dialog v-model="verArticulos" max-width="1000px">
+                    <v-dialog v-model="verArticulos" max-width="1000px" persistent>
                         <v-card>
                             <v-card-title>
                                 <span class="headline">Seleccione un artículo</span>
@@ -65,7 +65,7 @@
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
-                    <v-dialog v-model="adModal" max-width="290">
+                    <v-dialog v-model="adModal" max-width="290" persistent>
                         <v-card>
                             <v-card-title class="headline" v-if="adAccion==1">¿Activar Item?</v-card-title>
                             <v-card-title class="headline" v-if="adAccion==2">¿Anular Ingreso?</v-card-title>
