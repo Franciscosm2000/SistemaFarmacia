@@ -254,9 +254,9 @@
                         </v-text-field>
                     </v-flex>
                     <v-flex xs12 sm8 md8 lg8 xl8>
-                        <v-select v-model="idcliente"
+                        <v-autocomplete v-model="idcliente"
                         :items="clientes" label="Cliente">
-                        </v-select>
+                        </v-autocomplete>
                     </v-flex>
                     <v-flex xs12 sm4 md4 lg4 xl4>
                         <v-text-field type="number" v-model="impuesto" label="Impuesto">

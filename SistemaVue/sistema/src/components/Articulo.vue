@@ -31,9 +31,9 @@
                                 </v-flex>
                                 
                                 <v-flex xs6 sm6 md6>
-                                    <v-select v-model="idcategoria"
+                                    <v-autocomplete v-model="idcategoria"
                                     :items="categorias" label="Categoría">
-                                    </v-select>
+                                    </v-autocomplete>
                                 </v-flex>
                                 <v-flex xs12 sm12 md12>
                                     <v-text-field v-model="nombre" label="Nombre"></v-text-field>
