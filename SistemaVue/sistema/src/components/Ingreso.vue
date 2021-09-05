@@ -381,6 +381,10 @@
                     else if (error.response.status == 403){
                         me.activarErrores(2,"Error de permisos.","orange"); 
                     }
+                    else if (error.response.status == 404){
+                        me.activarErrores(2,"El articulo no existe.","red");
+                        me.codigo = '';
+                    }
                     else{
                         me.activarErrores(2,error.response.data,"red");
                     }

@@ -154,6 +154,7 @@
 <script>
     import axios from 'axios'
     import jsPDF from 'jspdf'
+    import autoTable from 'jspdf-autotable';
     import VueBarcode from 'vue-barcode';
     import Secion from '@/components/Secion'
     import Mensaje from '@/components/Mensaje';
