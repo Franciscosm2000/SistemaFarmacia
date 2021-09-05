@@ -31,8 +31,7 @@ namespace Sistema.Web.Controllers
             var ingreso = await _context.Ingresos
                 .Include(i => i.usuario)
                 .Include(i=>i.persona)
-                .OrderByDescending(i=>i.idingreso)
-                .Take(100)
+                .OrderByDescending(i=>i.fecha_hora)
                 .ToListAsync();
 
             return ingreso.Select(i => new IngresoViewModel
@@ -62,7 +61,7 @@ namespace Sistema.Web.Controllers
                 .Include(i => i.usuario)
                 .Include(i => i.persona)
                 .Where(i=>i.num_comprobante.Contains(texto))
-                .OrderByDescending(i => i.idingreso)
+                .OrderByDescending(i => i.fecha_hora)
                 .ToListAsync();
 
             return ingreso.Select(i => new IngresoViewModel

@@ -246,7 +246,7 @@
                     { text: 'Proveedor', value: 'proveedor' },
                     { text: 'Tipo Comprobante', value: 'tipo_comprobante' },
                     { text: 'Número Comprobante', value: 'num_comprobante', sortable: false  },
-                    { text: 'Fecha', value: 'fecha_hora', sortable: false  },
+                    { text: 'Fecha', value: 'fecha_hora'  },
                     { text: 'Impuesto (%)', value: 'impuesto', sortable: false  },
                     { text: 'Total', value: 'total', sortable: false  },
                     { text: 'Estado', value: 'estado', sortable: false  }                

@@ -31,8 +31,7 @@ namespace Sistema.Web.Controllers
             var venta = await _context.Ventas
                 .Include(v => v.usuario)
                 .Include(v => v.persona)
-                .OrderByDescending(v => v.idventa)
-                .Take(100)
+                .OrderByDescending(v => v.fecha_hora)
                 .ToListAsync();
 
             return venta.Select(v => new VentaViewModel
@@ -86,7 +85,7 @@ namespace Sistema.Web.Controllers
                 .Include(v => v.usuario)
                 .Include(v => v.persona)
                 .Where(v => v.num_comprobante.Contains(texto))
-                .OrderByDescending(v => v.idventa)
+                .OrderByDescending(v => v.fecha_hora)
                 .ToListAsync();
 
             return venta.Select(v => new VentaViewModel
@@ -120,8 +119,7 @@ namespace Sistema.Web.Controllers
                 .Include(v => v.persona)
                 .Where(i=>i.fecha_hora>=FechaInicio)
                 .Where(i => i.fecha_hora <= FechaFin)
-                .OrderByDescending(v => v.idventa)
-                .Take(100)
+                .OrderByDescending(v => v.fecha_hora)
                 .ToListAsync();
 
             return venta.Select(v => new VentaViewModel

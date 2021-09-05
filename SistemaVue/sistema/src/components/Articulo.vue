@@ -171,7 +171,7 @@
                     { text: 'Nombre', value: 'nombre' },
                     { text: 'Categoría', value: 'categoria' },
                     { text: 'Stock', value: 'stock', sortable: false  },
-                    { text: 'Precio Venta', value: 'precio_venta', sortable: false  },
+                    { text: 'Precio Venta', value: 'precio_venta' },
                     { text: 'Descripción', value: 'descripcion', sortable: false  },
                     { text: 'Estado', value: 'condicion', sortable: false  }                
                 ],
