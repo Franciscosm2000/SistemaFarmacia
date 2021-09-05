@@ -189,7 +189,7 @@
                             </v-card-text>
                         </v-card>
                     </v-dialog>
-                </v-toolbar>
+            </v-toolbar>
             <v-data-table
                 :headers="headers"
                 :items="ventas"
@@ -325,6 +325,12 @@
                     </v-flex>
 		        </v-layout>
             </v-container>
+            <!-- PANTALLA DE CARGA-->
+            <PantallaCarga :activo="carga" @escucharResultPantalla="resultPantalla()"> </PantallaCarga>
+             <!-- DIALOGO DE ERROR-->
+           <Mensaje :activo="activarError" :msj="msjError" :tipo="tipoMsj" @escucharResultMsj="resultMsj()"> </Mensaje>
+            <!--- CIERRE DE SECION --->
+            <Secion :activo="login_" @escucharResult="resultHijo()" ></Secion>
         </v-flex>
     </v-layout>
 </template>
@@ -333,6 +339,9 @@
     import jsPDF from 'jspdf'
     import html2canvas from 'html2canvas';
     import VueBarcode from 'vue-barcode';
+    import Secion from '@/components/Secion'
+    import Mensaje from '@/components/Mensaje';
+    import PantallaCarga from '@/components/PantallaCarga';
 
     export default {
         data(){
@@ -399,7 +408,12 @@
                 num_documento:'',
                 direccion:'',
                 telefono:'',
-                email:''             
+                email:'' ,
+                login_:false,
+                tipoMsj:'',
+                msjError:'',
+                activarError:false,
+	            carga:false,    
             }
         },
         computed: {
@@ -418,13 +432,37 @@
             }
         },
         components:{
-             'barcode': VueBarcode
+            'barcode': VueBarcode,
+            Secion,
+            Mensaje,
+            PantallaCarga
         },
         created () {
             this.listar();
             this.select();
         },
         methods:{
+            //SECION
+            resultHijo(){
+                this.login_ = false;
+            },
+            resultMsj(){
+               this.activarError = false; 
+            },  
+            resultPantalla(){
+                this.carga = false;
+            },
+            activarErrores(tipo,err,color){
+                if(tipo == 1){
+                    this.login_ =true;
+                }else{
+                    this.activarError=true;
+                    this.msjError = err;
+                    this.tipoMsj = color;
+                    setTimeout(this.resultMsj,2000);
+                }
+            },
+            //FIN - SECION
             crearPDF(){
                 var quotes = document.getElementById('factura');
                 html2canvas(quotes).then(function (canvas) {
@@ -470,6 +508,7 @@
                 if(this.codigo === null || this.codigo === '')
                     return;
 
+                this.carga = true;
                 let me=this;
                 me.errorArticulo=null;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
@@ -479,20 +518,41 @@
                     //console.log(response);
                     me.agregarDetalle(response.data);
                     me.codigo = '';
+                    me.resultPantalla();
+                    me.activarErrores(2,"Articulo agregado.","green");
                 }).catch(function(error){
-                    console.log(error);
-                    me.errorArticulo='No existe el artículo';
+                    me.resultPantalla(); //Cierre de pantalla
+                    if (error.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (error.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,error.response.data,"red");
+                    }
                 });
             },
             listarArticulo(){
+                this.carga = true;
                 let me=this;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
                 axios.get('api/Articulos/Listar',configuracion).then(function(response){
                     //console.log(response);
                     me.articulos=response.data;
+                    me.resultPantalla();
                 }).catch(function(error){
-                    console.log(error);
+                    me.resultPantalla(); //Cierre de pantalla
+                    if (error.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (error.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,error.response.data,"red");
+                    }
                 });
             },
             mostrarArticulos(){
@@ -505,7 +565,8 @@
             agregarDetalle(data = []){
                 this.errorArticulo=null;
                 if (this.encuentra(data['idarticulo'])){
-                    this.errorArticulo="El artículo ya ha sido agregado."
+                    //this.errorArticulo="El artículo ya ha sido agregado."
+                    this.activarErrores(2,"El articulo ya esta agregado","red");
                 }
                 else{
                     this.detalles.push(
@@ -515,6 +576,7 @@
                         precio:data['precio_venta'],
                         descuento:0}
                     );
+                    this.activarErrores(2,"Articulo Agregado.","green");
                 }
                 
             },
@@ -534,6 +596,7 @@
                 }
             },
             listar(){
+                this.carga = true;
                 let me=this;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
@@ -547,19 +610,40 @@
                 axios.get(url,configuracion).then(function(response){
                     //console.log(response);
                     me.ventas=response.data;
+                    me.resultPantalla();
                 }).catch(function(error){
-                    console.log(error);
+                    me.resultPantalla(); //Cierre de pantalla
+                    if (error.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (error.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,error.response.data,"red");
+                    }
                 });
             },
             listarDetalles(id){
+                this.carga = true;
                 let me=this;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
                 axios.get('api/Ventas/ListarDetalles/'+id,configuracion).then(function(response){
                     //console.log(response);
                     me.detalles=response.data;
+                    me.resultPantalla();
                 }).catch(function(error){
-                    console.log(error);
+                    me.resultPantalla(); //Cierre de pantalla
+                    if (error.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (error.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,error.response.data,"red");
+                    }
                 });
             },
             verDetalles(item){
@@ -573,6 +657,7 @@
                 this.verDet=1;
             },
             select(){
+                this.carga = true;
                 let me=this;
                 var clientesArray=[];
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
@@ -582,8 +667,18 @@
                     clientesArray.map(function(x){
                         me.clientes.push({text: x.nombre,value:x.idpersona});
                     });
+                    me.resultPantalla();
                 }).catch(function(error){
-                    console.log(error);
+                    me.resultPantalla(); //Cierre de pantalla
+                    if (error.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (error.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,error.response.data,"red");
+                    }
                 });
             },
             limpiar(){
@@ -603,6 +698,7 @@
                 if (this.validar()){
                     return;
                 }
+                this.carga= true;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};                
                 let me=this;
@@ -617,9 +713,20 @@
                 },configuracion).then(function(response){
                     me.ocultarNuevo();
                     me.listar();
-                    me.limpiar();                        
+                    me.limpiar();                 
+                    me.resultPantalla();
+                    me.activarErrores(2,"Guardado Correctamente.","green");       
                 }).catch(function(error){
-                    console.log(error);
+                    me.resultPantalla(); //Cierre de pantalla
+                    if (error.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (error.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,error.response.data,"red");
+                    }
                 });
             },
             validar(){
@@ -680,6 +787,7 @@
             },
             */
             desactivar(){
+                this.carga = true;
                 let me=this;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
@@ -688,9 +796,20 @@
                     me.adAccion=0;
                     me.adNombre="";
                     me.adId="";
-                    me.listar();                       
+                    me.listar();             
+                    me.resultPantalla();          
+                    me.activarErrores(2,"Anulada Correctamente.","green");
                 }).catch(function(error){
-                    console.log(error);
+                    me.resultPantalla(); //Cierre de pantalla
+                    if (error.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (error.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,error.response.data,"red");
+                    }
                 });
             }
         }        

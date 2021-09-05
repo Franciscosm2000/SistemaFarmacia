@@ -95,7 +95,7 @@
 
                         </v-card>
                     </v-dialog>
-                </v-toolbar>
+            </v-toolbar>
             <v-data-table
                 :headers="headers"
                 :items="usuarios"
@@ -148,11 +148,21 @@
                 <v-btn color="primary" @click="listar">Resetear</v-btn>
                 </template>
             </v-data-table>
+
+            <!-- PANTALLA DE CARGA-->
+            <PantallaCarga :activo="carga" @escucharResultPantalla="resultPantalla()"> </PantallaCarga>
+             <!-- DIALOGO DE ERROR-->
+           <Mensaje :activo="activarError" :msj="msjError" :tipo="tipoMsj" @escucharResultMsj="resultMsj()"> </Mensaje>
+            <!--- CIERRE DE SECION --->
+            <Secion :activo="login_" @escucharResult="resultHijo()" ></Secion>
         </v-flex>
     </v-layout>
 </template>
 <script>
     import axios from 'axios'
+    import Secion from '@/components/Secion'
+    import Mensaje from '@/components/Mensaje';
+    import PantallaCarga from '@/components/PantallaCarga';
     export default {
         data(){
             return {
@@ -205,23 +215,62 @@
             }
         },
 
+        components:{
+            Secion,
+            Mensaje,
+            PantallaCarga
+        },
+
         created () {
             this.listar();
             this.select();
         },
         methods:{
+            //SECION
+            resultHijo(){
+                this.login_ = false;
+            },
+            resultMsj(){
+               this.activarError = false; 
+            },  
+            resultPantalla(){
+                this.carga = false;
+            },
+            activarErrores(tipo,err,color){
+                if(tipo == 1){
+                    this.login_ =true;
+                }else{
+                    this.activarError=true;
+                    this.msjError = err;
+                    this.tipoMsj = color;
+                    setTimeout(this.resultMsj,2000);
+                }
+            },
+            //FIN - SECION
             listar(){
+                this.carga = true;
                 let me=this;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
                 axios.get('api/Usuarios/Listar',configuracion).then(function(response){
                     //console.log(response);
                     me.usuarios=response.data;
+                    me.resultPantalla();
                 }).catch(function(error){
-                    console.log(error);
+                    me.resultPantalla(); //Cierre de pantalla
+                    if (error.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (error.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,error.response.data,"red");
+                    }
                 });
             },
             select(){
+                this.carga = true;
                 let me=this;
                 var rolesArray=[];
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
@@ -231,8 +280,18 @@
                     rolesArray.map(function(x){
                         me.roles.push({text: x.nombre,value:x.idrol});
                     });
+                    me.resultPantalla();
                 }).catch(function(error){
-                    console.log(error);
+                    me.resultPantalla(); //Cierre de pantalla
+                    if (error.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (error.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,error.response.data,"red");
+                    }
                 });
             },
             editItem (item) {
@@ -274,6 +333,7 @@
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
                 if (this.editedIndex > -1) {
+                    this.carga = true;
                     //Código para editar
                     //Código para guardar
                     let me=this;
@@ -294,12 +354,24 @@
                     },configuracion).then(function(response){
                         me.close();
                         me.listar();
-                        me.limpiar();                        
+                        me.limpiar();                
+                        me.resultPantalla();
+                        me.activarErrores(2,"Actualizado Correctamente.","green");        
                     }).catch(function(error){
-                        console.log(error);
+                        me.resultPantalla(); //Cierre de pantalla
+                        if (error.response.status==401){
+                            me.activarErrores(1);
+                        }
+                        else if (error.response.status == 403){
+                            me.activarErrores(2,"Error de permisos.","orange"); 
+                        }
+                        else{
+                            me.activarErrores(2,error.response.data,"red");
+                        }
                     });
                 } else {
                     //Código para guardar
+                    this.carga = true;
                     let me=this;
                     axios.post('api/Usuarios/Crear',{
                         'idrol':me.idrol,
@@ -313,9 +385,20 @@
                     },configuracion).then(function(response){
                         me.close();
                         me.listar();
-                        me.limpiar();                        
+                        me.limpiar();          
+                        me.resultPantalla();              
+                        me.activarErrores(2,"Guardado Correctamente.","green");
                     }).catch(function(error){
-                        console.log(error);
+                        me.resultPantalla(); //Cierre de pantalla
+                        if (error.response.status==401){
+                            me.activarErrores(1);
+                        }
+                        else if (error.response.status == 403){
+                            me.activarErrores(2,"Error de permisos.","orange"); 
+                        }
+                        else{
+                            me.activarErrores(2,error.response.data,"red");
+                        }
                     });
                 }
             },
@@ -362,6 +445,7 @@
                 this.adModal=0;
             },
             activar(){
+                this.carga = true;
                 let me=this;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
@@ -370,12 +454,24 @@
                     me.adAccion=0;
                     me.adNombre="";
                     me.adId="";
-                    me.listar();                       
+                    me.listar();        
+                    me.resultPantalla();         
+                    me.activarErrores(2,"Activado Correctamente.","green");      
                 }).catch(function(error){
-                    console.log(error);
+                    me.resultPantalla(); //Cierre de pantalla
+                    if (error.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (error.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,error.response.data,"red");
+                    }
                 });
             },
             desactivar(){
+                this.carga = true;
                 let me=this;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
@@ -384,9 +480,20 @@
                     me.adAccion=0;
                     me.adNombre="";
                     me.adId="";
-                    me.listar();                       
+                    me.listar();       
+                    me.resultPantalla();
+                    me.activarErrores(2,"Desactivado Correctamente.","green");                
                 }).catch(function(error){
-                    console.log(error);
+                    me.resultPantalla(); //Cierre de pantalla
+                    if (error.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (error.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,error.response.data,"red");
+                    }
                 });
             }
         }        

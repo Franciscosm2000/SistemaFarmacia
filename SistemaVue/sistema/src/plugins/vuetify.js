@@ -16,6 +16,8 @@ import {
   VDataTable,
   VSelect,
   VAutocomplete,
+  VProgressLinear,
+  VSnackbar,
   transitions
 } from 'vuetify'
 import 'vuetify/src/stylus/app.styl'
@@ -37,6 +39,8 @@ Vue.use(Vuetify, {
     VDataTable,
     VSelect,
     VAutocomplete,
+    VProgressLinear,
+    VSnackbar,
     transitions
   },
   theme: {

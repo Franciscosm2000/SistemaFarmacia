@@ -141,6 +141,13 @@
                 <v-btn color="primary" @click="listar">Resetear</v-btn>
                 </template>
             </v-data-table>
+
+             <!-- PANTALLA DE CARGA-->
+            <PantallaCarga :activo="carga" @escucharResultPantalla="resultPantalla()"> </PantallaCarga>
+             <!-- DIALOGO DE ERROR-->
+           <Mensaje :activo="activarError" :msj="msjError" :tipo="tipoMsj" @escucharResultMsj="resultMsj()"> </Mensaje>
+            <!--- CIERRE DE SECION --->
+            <Secion :activo="login_" @escucharResult="resultHijo()" ></Secion>
         </v-flex>
     </v-layout>
 </template>
@@ -148,6 +155,10 @@
     import axios from 'axios'
     import jsPDF from 'jspdf'
     import VueBarcode from 'vue-barcode';
+    import Secion from '@/components/Secion'
+    import Mensaje from '@/components/Mensaje';
+    import PantallaCarga from '@/components/PantallaCarga';
+
 
     export default {
         data(){
@@ -180,7 +191,12 @@
                 adModal: 0,
                 adAccion: 0,
                 adNombre: '',
-                adId: ''             
+                adId: '',
+                login_:false,
+                tipoMsj:'',
+                msjError:'',
+                activarError:false,     
+                carga:false,        
             }
         },
         computed: {
@@ -189,7 +205,10 @@
             }
         },
         components:{
-            'barcode': VueBarcode
+            'barcode': VueBarcode,
+            Secion,
+            Mensaje,
+            PantallaCarga
         },
 
         watch: {
@@ -203,6 +222,28 @@
             this.select();
         },
         methods:{
+        //SECION
+            resultHijo(){
+                this.login_ = false;
+            },
+            resultMsj(){
+               this.activarError = false; 
+            },  
+            resultPantalla(){
+                this.carga = false;
+            },
+            activarErrores(tipo,err,color){
+                if(tipo == 1){
+                    this.login_ =true;
+                }else{
+                    this.activarError=true;
+                    this.msjError = err;
+                    this.tipoMsj = color;
+                    setTimeout(this.resultMsj,2000);
+                }
+            },
+            //FIN - SECION
+
             crearPDF(){
                 var columns = [
                     {title: "Nombre", dataKey: "nombre"},
@@ -228,17 +269,29 @@
                 doc.save('Articulos.pdf');
             },
             listar(){
+                this.carga = true;
                 let me=this;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
                 axios.get('api/Articulos/Listar',configuracion).then(function(response){
                     //console.log(response);
                     me.articulos=response.data;
-                }).catch(function(error){
-                    console.log(error);
+                    me.resultPantalla() //Cierre de pantalla
+                }).catch(function(err){
+                     me.resultPantalla() //Cierre de pantalla
+                    if (err.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (err.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,err.response.data,"red");
+                    }
                 });
             },
             select(){
+                this.carga = true;
                 let me=this;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
@@ -247,9 +300,19 @@
                     categoriasArray=response.data;
                     categoriasArray.map(function(x){
                         me.categorias.push({text: x.nombre,value:x.idcategoria});
+                        me.resultPantalla() //Cierre de pantalla
                     });
-                }).catch(function(error){
-                    console.log(error);
+                }).catch(function(err){
+                    me.resultPantalla() //Cierre de pantalla
+                    if (err.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (err.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,err.response.data,"red");
+                    }
                 });
             },
             editItem (item) {
@@ -284,6 +347,7 @@
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
                 if (this.editedIndex > -1) {
+                    this.carga = true;
                     //Código para editar
                     //Código para guardar
                     let me=this;
@@ -298,12 +362,24 @@
                     },configuracion).then(function(response){
                         me.close();
                         me.listar();
-                        me.limpiar();                        
-                    }).catch(function(error){
-                        console.log(error);
+                        me.limpiar();        
+                        me.resultPantalla(); //Cierre de pantalla          
+                        me.activarErrores(2,"Actualizado Correctamente.","green");       
+                    }).catch(function(err){
+                         me.resultPantalla(); //Cierre de pantalla
+                        if (err.response.status==401){
+                            me.activarErrores(1);
+                        }
+                        else if (err.response.status == 403){
+                            me.activarErrores(2,"Error de permisos.","orange"); 
+                        }
+                        else{
+                            me.activarErrores(2,err.response.data,"red");
+                        }
                     });
                 } else {
                     //Código para guardar
+                    this.carga = true;
                     let me=this;
                     axios.post('api/Articulos/Crear',{
                         'idcategoria':me.idcategoria,
@@ -315,9 +391,20 @@
                     },configuracion).then(function(response){
                         me.close();
                         me.listar();
-                        me.limpiar();                        
-                    }).catch(function(error){
-                        console.log(error);
+                        me.limpiar();                    
+                        me.resultPantalla(); //Cierre de pantalla    
+                        me.activarErrores(2,"Guardado Correctamente.","green");   
+                    }).catch(function(err){
+                         me.resultPantalla(); //Cierre de pantalla
+                        if (err.response.status==401){
+                            me.activarErrores(1);
+                        }
+                        else if (err.response.status == 403){
+                            me.activarErrores(2,"Error de permisos.","orange"); 
+                        }
+                        else{
+                            me.activarErrores(2,err.response.data,"red");
+                        }
                     });
                 }
             },
@@ -360,6 +447,7 @@
                 this.adModal=0;
             },
             activar(){
+                this.carga = true;
                 let me=this;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
@@ -368,12 +456,24 @@
                     me.adAccion=0;
                     me.adNombre="";
                     me.adId="";
-                    me.listar();                       
-                }).catch(function(error){
-                    console.log(error);
+                    me.listar();      
+                    me.resultPantalla(); //Cierre de pantalla         
+                    me.activarErrores(2,"Activado Correctamente.","green");           
+                }).catch(function(err){
+                    me.resultPantalla(); //Cierre de pantalla
+                    if (err.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (err.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,err.response.data,"red");
+                    }
                 });
             },
             desactivar(){
+                this.carga = true;
                 let me=this;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
@@ -382,9 +482,20 @@
                     me.adAccion=0;
                     me.adNombre="";
                     me.adId="";
-                    me.listar();                       
-                }).catch(function(error){
-                    console.log(error);
+                    me.listar();               
+                    me.resultPantalla();        
+                    me.activarErrores(2,"Desactivado Correctamente.","green");   
+                }).catch(function(err){
+                    me.resultPantalla(); //Cierre de pantalla
+                    if (err.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (err.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,err.response.data,"red");
+                    }
                 });
             }
         }        

@@ -61,7 +61,7 @@
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
-                </v-toolbar>
+            </v-toolbar>
             <v-data-table
                 :headers="headers"
                 :items="clientes"
@@ -90,11 +90,20 @@
                 <v-btn color="primary" @click="listar">Resetear</v-btn>
                 </template>
             </v-data-table>
+            <!-- PANTALLA DE CARGA-->
+            <PantallaCarga :activo="carga" @escucharResultPantalla="resultPantalla()"> </PantallaCarga>
+             <!-- DIALOGO DE ERROR-->
+           <Mensaje :activo="activarError" :msj="msjError" :tipo="tipoMsj" @escucharResultMsj="resultMsj()"> </Mensaje>
+            <!--- CIERRE DE SECION --->
+            <Secion :activo="login_" @escucharResult="resultHijo()" ></Secion>
         </v-flex>
     </v-layout>
 </template>
 <script>
     import axios from 'axios'
+    import Secion from '@/components/Secion'
+    import Mensaje from '@/components/Mensaje';
+    import PantallaCarga from '@/components/PantallaCarga';
     export default {
         data(){
             return {
@@ -125,7 +134,12 @@
                 adModal: 0,
                 adAccion: 0,
                 adNombre: '',
-                adId: ''             
+                adId: '' ,
+                login_:false,
+                tipoMsj:'',
+                msjError:'',
+                activarError:false,
+                carga:false, 
             }
         },
         computed: {
@@ -139,20 +153,57 @@
             val || this.close()
             }
         },
+        components:{
+            Secion,
+            Mensaje,
+            PantallaCarga
+        },
 
         created () {
             this.listar();
         },
         methods:{
+            //SECION
+            resultHijo(){
+                this.login_ = false;
+            },
+            resultMsj(){
+               this.activarError = false; 
+            },  
+            resultPantalla(){
+                this.carga = false;
+            },
+            activarErrores(tipo,err,color){
+                if(tipo == 1){
+                    this.login_ =true;
+                }else{
+                    this.activarError=true;
+                    this.msjError = err;
+                    this.tipoMsj = color;
+                    setTimeout(this.resultMsj,2000);
+                }
+            },
+            //FIN - SECION
             listar(){
+                this.carga = true;
                 let me=this;
                 let header={"Authorization" : "Bearer " + this.$store.state.token};
                 let configuracion= {headers : header};
                 axios.get('api/Personas/ListarClientes',configuracion).then(function(response){
                     //console.log(response);
                     me.clientes=response.data;
+                    me.resultPantalla();
                 }).catch(function(error){
-                    console.log(error);
+                    me.resultPantalla(); //Cierre de pantalla
+                    if (error.response.status==401){
+                        me.activarErrores(1);
+                    }
+                    else if (error.response.status == 403){
+                        me.activarErrores(2,"Error de permisos.","orange"); 
+                    }
+                    else{
+                        me.activarErrores(2,error.response.data,"red");
+                    }
                 });
             },
             editItem (item) {
@@ -188,6 +239,7 @@
                 let configuracion= {headers : header};
                 if (this.editedIndex > -1) {
                     //Código para editar
+                    this.carga = true;
                     let me=this;
                     axios.put('api/Personas/Actualizar',{
                         'idpersona':me.id,
@@ -201,12 +253,24 @@
                     },configuracion).then(function(response){
                         me.close();
                         me.listar();
-                        me.limpiar();                        
+                        me.limpiar();             
+                        me.resultPantalla();           
+                        me.activarErrores(2,"Actualizado Correctamente.","green");   
                     }).catch(function(error){
-                        console.log(error);
+                        me.resultPantalla(); //Cierre de pantalla
+                        if (error.response.status==401){
+                            me.activarErrores(1);
+                        }
+                        else if (error.response.status == 403){
+                            me.activarErrores(2,"Error de permisos.","orange"); 
+                        }
+                        else{
+                            me.activarErrores(2,error.response.data,"red");
+                        }
                     });
                 } else {
                     //Código para guardar
+                    this.carga = true;
                     let me=this;
                     axios.post('api/Personas/Crear',{
                         'tipo_persona':'Cliente',
@@ -219,9 +283,20 @@
                     },configuracion).then(function(response){
                         me.close();
                         me.listar();
-                        me.limpiar();                        
+                        me.limpiar();          
+                        me.resultPantalla();     
+                        me.activarErrores(2,"Guardado Correctamente.","green");            
                     }).catch(function(error){
-                        console.log(error);
+                        me.resultPantalla(); //Cierre de pantalla
+                        if (error.response.status==401){
+                            me.activarErrores(1);
+                        }
+                        else if (error.response.status == 403){
+                            me.activarErrores(2,"Error de permisos.","orange"); 
+                        }
+                        else{
+                            me.activarErrores(2,error.response.data,"red");
+                        }
                     });
                 }
             },
