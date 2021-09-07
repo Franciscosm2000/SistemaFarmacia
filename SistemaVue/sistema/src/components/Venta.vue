@@ -386,7 +386,7 @@
                 total:0,
                 cabeceraArticulos: [
                     {text: 'Seleccionar', value: 'seleccionar', sortable: false },
-                    { text: 'Artículo', value: 'articulo'},
+                    { text: 'Artículo', value: 'nombre'},
                     { text: 'Categoría', value: 'categoria' },
                     { text: 'Descripción', value: 'descripcion', sortable: false },
                     { text: 'Stock', value: 'stock', sortable: false  },
