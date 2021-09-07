@@ -203,12 +203,7 @@ namespace Sistema.Web.Controllers
 
             var articulo = await _context.Articulos.FirstOrDefaultAsync(a => a.idarticulo == model.idarticulo);
 
-            var dat = await _context.Articulos.Where(a=> a.codigo == articulo.codigo).ToListAsync();
-
-
-            if(dat.Count() > 1)
-                return BadRequest("El código ya existe");
-
+           // var dat = await _context.Articulos.Where(a=> a.codigo == articulo.codigo).ToListAsync();
 
             if (articulo == null)
             {
@@ -245,7 +240,7 @@ namespace Sistema.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var dat = await _context.Articulos.Where(a => a.codigo == model.codigo).ToListAsync();
+            var dat = await _context.Articulos.Where(a => a.codigo == model.codigo).FirstOrDefaultAsync();
 
             if (dat != null) {
                 return BadRequest("El código ya existe.");

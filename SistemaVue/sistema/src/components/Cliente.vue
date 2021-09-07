@@ -124,7 +124,7 @@
                 id: '',
                 nombre:'',
                 tipo_documento: '',
-                documentos: ['DNI','RUC','PASAPORTE','CEDULA'],
+                documentos: ['CEDULA'],
                 num_documento: '',
                 direccion: '',
                 telefono: '',
@@ -229,7 +229,7 @@
                 this.direccion="";
                 this.telefono="";
                 this.email="";
-                this.validaMensaje();
+                this.validaMensaje= [];
                 this.editedIndex=-1;
             },
             guardar () {

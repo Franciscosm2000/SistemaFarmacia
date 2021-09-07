@@ -108,9 +108,11 @@ namespace Sistema.Web.Controllers
 
             var email = model.email.ToLower();
 
-            if (await _context.Personas.AnyAsync(p => p.email == email))
-            {
-                return BadRequest("El email ya existe");
+            if (email != null || email !=" " || email!= "") {
+                if (await _context.Personas.AnyAsync(p => p.email == email))
+                {
+                    return BadRequest("El email ya existe");
+                }
             }
 
             Persona persona = new Persona

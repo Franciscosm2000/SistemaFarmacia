@@ -71,10 +71,10 @@ namespace Sistema.Web.Controllers
                 return BadRequest("El email ya existe");
             }
 
-            var dat = await _context.Usuarios.Where(u=> u.email.ToUpper() == model.email.ToUpper()).ToListAsync();
+            var dat = await _context.Usuarios.Where(u=> u.email.ToUpper() == model.email.ToUpper()).FirstOrDefaultAsync();
 
             if (dat != null)
-                return BadRequest("El usuario ya existe.");
+                return BadRequest("El usuario ya existe, "+dat.email);
 
             CrearPasswordHash(model.password,out byte[] passwordHash,out byte[] passwordSalt);
 
@@ -123,15 +123,11 @@ namespace Sistema.Web.Controllers
 
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.idusuario == model.idusuario);
 
-            var dat = await _context.Usuarios.Where(u => u.email.ToUpper() == model.email.ToUpper()).ToListAsync();
-
             if (usuario == null)
             {
                 return NotFound("Usuario no encontrado");
             }
 
-            if (dat.Count > 1)
-                return BadRequest("El usuario ya existe.");
 
             usuario.idrol = model.idrol;
             usuario.nombre = model.nombre;

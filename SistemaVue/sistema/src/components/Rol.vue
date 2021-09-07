@@ -112,9 +112,9 @@
                 axios.get('api/Roles/Listar',configuracion).then(function(response){
                     //console.log(response);
                     me.roles=response.data;
-                    me.resultPantalla();
+                    me.carga = false;
                 }).catch(function(error){
-                    me.resultPantalla(); //Cierre de pantalla
+                    me.carga =false; //Cierre de pantalla
                     if (error.response.status==401){
                         me.activarErrores(1);
                     }
