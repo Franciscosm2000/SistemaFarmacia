@@ -269,7 +269,10 @@ namespace Sistema.Web.Controllers
         public async Task<List<VentaReportModel>> SalidasXFecha([FromRoute] DateTime desde, DateTime hasta)
         {
 
-            var salidas = await _context.Ventas.Where(i => i.fecha_hora >= desde && i.fecha_hora <= hasta).ToListAsync(); //Ingresos
+            var salidas = await _context.Ventas.Where(i => (i.fecha_hora >= desde && i.fecha_hora <= hasta) && i.estado == "Aceptado")
+                .Include(p=> p.persona)
+                .OrderByDescending(s=> s.fecha_hora)
+                .ToListAsync(); //Ingresos
 
             List<VentaReportModel> resultado = new List<VentaReportModel>();
 
@@ -283,8 +286,10 @@ namespace Sistema.Web.Controllers
                 {
                     resultado.Add(new VentaReportModel()  //insersion en coleccion 
                     {
+                        id_venta = item2.idventa,
                         codigo_arti = item2.articulo.codigo,
                         nom_arti = item2.articulo.nombre,
+                        cliente = item.persona.nombre,
                         cantidad = item2.cantidad,
                         valor = Math.Round((decimal)item2.cantidad * item2.precio, 2),
                         fecha = item.fecha_hora

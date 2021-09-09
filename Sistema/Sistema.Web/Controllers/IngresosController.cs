@@ -202,11 +202,14 @@ namespace Sistema.Web.Controllers
 
 
         //REPORTE
-        [Authorize(Roles = "Administrador")]
+       // [Authorize(Roles = "Administrador")]
         [HttpGet("[action]/{desde}/{hasta}")]
         public async Task<List<IngresoReportModel>> IngresosXFecha([FromRoute] DateTime desde , DateTime hasta) {
 
-            var ingresos = await _context.Ingresos.Where(i => i.fecha_hora >= desde && i.fecha_hora <= hasta).ToListAsync(); //Ingresos
+            var ingresos = await _context.Ingresos.Where(i => i.fecha_hora >= desde && i.fecha_hora <= hasta)
+                .Include(p => p.persona)
+                .OrderByDescending(s=> s.fecha_hora)
+                .ToListAsync(); //Ingresos
 
             List<IngresoReportModel> resultado = new List<IngresoReportModel>();
 
@@ -220,8 +223,10 @@ namespace Sistema.Web.Controllers
                 {
                     resultado.Add(new IngresoReportModel()          //insersion en coleccion 
                     {
+                        id_ingreso = item.idingreso,
                         codigo_arti = item2.articulo.codigo,
                         nom_arti = item2.articulo.nombre,
+                        proveedor = item.persona.nombre,
                         cantidad = item2.cantidad,
                         valor = Math.Round((decimal) item2.cantidad * item2.precio,2),
                         fecha = item.fecha_hora

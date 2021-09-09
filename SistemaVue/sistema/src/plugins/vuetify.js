@@ -18,6 +18,7 @@ import {
   VAutocomplete,
   VProgressLinear,
   VSnackbar,
+  VHover,
   transitions
 } from 'vuetify'
 import 'vuetify/src/stylus/app.styl'
@@ -41,6 +42,7 @@ Vue.use(Vuetify, {
     VAutocomplete,
     VProgressLinear,
     VSnackbar,
+    VHover,
     transitions
   },
   theme: {
