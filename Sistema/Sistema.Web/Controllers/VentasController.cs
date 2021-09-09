@@ -56,7 +56,7 @@ namespace Sistema.Web.Controllers
         }
 
         // GET: api/Ventas/VentasMes12
-        [Authorize(Roles = "Almacenero,Vendedor,Administrador")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpGet("[action]")]
         public async Task<IEnumerable<ConsultaViewModel>> VentasMes12()
         {
@@ -263,6 +263,42 @@ namespace Sistema.Web.Controllers
             return Ok();
         }
 
+        //REPORTE
+        [Authorize(Roles = "Administrador")]
+        [HttpGet("[action]/{desde}/{hasta}")]
+        public async Task<List<VentaReportModel>> SalidasXFecha([FromRoute] DateTime desde, DateTime hasta)
+        {
+
+            var salidas = await _context.Ventas.Where(i => (i.fecha_hora >= desde && i.fecha_hora <= hasta) && i.estado == "Aceptado")
+                .Include(p=> p.persona)
+                .OrderByDescending(s=> s.fecha_hora)
+                .ToListAsync(); //Ingresos
+
+            List<VentaReportModel> resultado = new List<VentaReportModel>();
+
+            foreach (var item in salidas)
+            {
+                var detalle_sal = await _context.DetallesVentas.Where(d => d.idventa == item.idventa) //detalle de dichos ingresos 
+                    .Include(a => a.articulo)
+                    .ToListAsync();
+
+                foreach (var item2 in detalle_sal)
+                {
+                    resultado.Add(new VentaReportModel()  //insersion en coleccion 
+                    {
+                        id_venta = item2.idventa,
+                        codigo_arti = item2.articulo.codigo,
+                        nom_arti = item2.articulo.nombre,
+                        cliente = item.persona.nombre,
+                        cantidad = item2.cantidad,
+                        valor = Math.Round((decimal)item2.cantidad * item2.precio, 2),
+                        fecha = item.fecha_hora
+                    });
+                }
+            }
+
+            return resultado;
+        }
 
         private bool VentaExists(int id)
         {

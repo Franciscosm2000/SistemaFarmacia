@@ -12,7 +12,7 @@ using Sistema.Web.Models.Almacen.Categoria;
 
 namespace Sistema.Web.Controllers
 {
-    [Authorize(Roles = "Almacenero,Administrador")]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriasController : ControllerBase
@@ -25,6 +25,7 @@ namespace Sistema.Web.Controllers
         }
 
         // GET: api/Categorias/Listar
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpGet("[action]")]
         public async Task <IEnumerable<CategoriaViewModel>> Listar()
         {
@@ -42,6 +43,7 @@ namespace Sistema.Web.Controllers
 
         // GET: api/Categorias/Listar
         [HttpGet("[action]")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         public async Task<IEnumerable<SelectViewModel>> Select()
         {
             var categoria = await _context.Categorias.Where(c=>c.condicion==true).ToListAsync();
@@ -56,6 +58,7 @@ namespace Sistema.Web.Controllers
 
         // GET: api/Categorias/Mostrar/1
         [HttpGet("[action]/{id}")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         public async Task<IActionResult> Mostrar([FromRoute] int id)
         {
 
@@ -76,6 +79,7 @@ namespace Sistema.Web.Controllers
 
         // PUT: api/Categorias/Actualizar
         [HttpPut("[action]")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Actualizar([FromBody] ActualizarViewModel model)
         {
             if (!ModelState.IsValid)
@@ -113,6 +117,7 @@ namespace Sistema.Web.Controllers
         }
 
         // POST: api/Categorias/Crear
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpPost("[action]")]
         public async Task<IActionResult> Crear([FromBody] CrearViewModel model)
         {
@@ -148,6 +153,7 @@ namespace Sistema.Web.Controllers
         }
 
         // DELETE: api/Categorias/Eliminar/1
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("[action]/{id}")]
         public async Task<IActionResult> Eliminar([FromRoute] int id)
         {
@@ -176,6 +182,7 @@ namespace Sistema.Web.Controllers
         }
 
         // PUT: api/Categorias/Desactivar/1
+        [Authorize(Roles = "Administrador")]
         [HttpPut("[action]/{id}")]
         public async Task<IActionResult> Desactivar([FromRoute] int id)
         {
@@ -208,6 +215,7 @@ namespace Sistema.Web.Controllers
         }
 
         // PUT: api/Categorias/Activar/1
+        [Authorize(Roles = "Administrador")]
         [HttpPut("[action]/{id}")]
         public async Task<IActionResult> Activar([FromRoute] int id)
         {

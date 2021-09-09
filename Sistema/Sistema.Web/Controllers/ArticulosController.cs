@@ -24,7 +24,7 @@ namespace Sistema.Web.Controllers
         }
 
         // GET: api/Articulos/Listar
-        [Authorize(Roles = "Almacenero,Administrador")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpGet("[action]")]
         public async Task<IEnumerable<ArticuloViewModel>> Listar()
         {
@@ -46,7 +46,7 @@ namespace Sistema.Web.Controllers
         }
 
         // GET: api/Articulos/ListarIngreso/texto
-        [Authorize(Roles = "Almacenero,Administrador")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpGet("[action]/{texto}")]
         public async Task<IEnumerable<ArticuloViewModel>> ListarIngreso([FromRoute] string texto)
         {
@@ -98,7 +98,7 @@ namespace Sistema.Web.Controllers
 
 
         // GET: api/Articulos/Mostrar/1
-        [Authorize(Roles = "Almacenero,Administrador")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpGet("[action]/{id}")]
         public async Task<IActionResult> Mostrar([FromRoute] int id)
         {
@@ -126,7 +126,7 @@ namespace Sistema.Web.Controllers
         }
 
         // GET: api/Articulos/BuscarCodigoIngreso/12345678
-        [Authorize(Roles = "Almacenero,Administrador")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpGet("[action]/{codigo}")]
         public async Task<IActionResult> BuscarCodigoIngreso([FromRoute] string codigo)
         {
@@ -187,7 +187,7 @@ namespace Sistema.Web.Controllers
 
 
         // PUT: api/Articulos/Actualizar
-        [Authorize(Roles = "Almacenero,Administrador")]
+        [Authorize(Roles = "Administrador")]
         [HttpPut("[action]")]
         public async Task<IActionResult> Actualizar([FromBody] ActualizarViewModel model)
         {
@@ -231,7 +231,7 @@ namespace Sistema.Web.Controllers
         }
 
         // POST: api/Articulos/Crear
-        [Authorize(Roles = "Almacenero,Administrador")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpPost("[action]")]
         public async Task<IActionResult> Crear([FromBody] CrearViewModel model)
         {
@@ -271,7 +271,7 @@ namespace Sistema.Web.Controllers
         }
 
         // PUT: api/Articulos/Desactivar/1
-        [Authorize(Roles = "Almacenero,Administrador")]
+        [Authorize(Roles = "Administrador")]
         [HttpPut("[action]/{id}")]
         public async Task<IActionResult> Desactivar([FromRoute] int id)
         {
@@ -304,7 +304,7 @@ namespace Sistema.Web.Controllers
         }
 
         // PUT: api/Articulos/Activar/1
-        [Authorize(Roles = "Almacenero,Administrador")]
+        [Authorize(Roles = "Administrador")]
         [HttpPut("[action]/{id}")]
         public async Task<IActionResult> Activar([FromRoute] int id)
         {

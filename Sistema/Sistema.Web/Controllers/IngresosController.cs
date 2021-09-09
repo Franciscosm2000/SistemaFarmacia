@@ -24,7 +24,7 @@ namespace Sistema.Web.Controllers
         }
 
         // GET: api/Ingresos/Listar
-        [Authorize(Roles = "Almacenero,Administrador")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpGet("[action]")]
         public async Task<IEnumerable<IngresoViewModel>> Listar()
         {
@@ -53,7 +53,7 @@ namespace Sistema.Web.Controllers
 
 
         // GET: api/Ingresos/ListarFiltro/texto
-        [Authorize(Roles = "Almacenero,Administrador")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpGet("[action]/{texto}")]
         public async Task<IEnumerable<IngresoViewModel>> ListarFiltro([FromRoute] string texto)
         {
@@ -82,7 +82,7 @@ namespace Sistema.Web.Controllers
         }
 
         // GET: api/Ingresos/ListarDetalles
-        [Authorize(Roles = "Almacenero,Administrador")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpGet("[action]/{idingreso}")]
         public async Task<IEnumerable<DetalleViewModel>> ListarDetalles([FromRoute] int idingreso)
         {
@@ -100,9 +100,9 @@ namespace Sistema.Web.Controllers
             });
 
         }
-        
+
         // POST: api/Ingresos/Crear
-        [Authorize(Roles = "Almacenero,Administrador")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpPost("[action]")]
         public async Task<IActionResult> Crear([FromBody] CrearViewModel model)
         {
@@ -152,7 +152,7 @@ namespace Sistema.Web.Controllers
         }
 
         // PUT: api/Ingresos/Anular/1
-        [Authorize(Roles = "Almacenero,Administrador")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpPut("[action]/{id}")]
         public async Task<IActionResult> Anular([FromRoute] int id)
         {
@@ -200,6 +200,42 @@ namespace Sistema.Web.Controllers
             return Ok();
         }
 
+
+        //REPORTE
+       // [Authorize(Roles = "Administrador")]
+        [HttpGet("[action]/{desde}/{hasta}")]
+        public async Task<List<IngresoReportModel>> IngresosXFecha([FromRoute] DateTime desde , DateTime hasta) {
+
+            var ingresos = await _context.Ingresos.Where(i => i.fecha_hora >= desde && i.fecha_hora <= hasta)
+                .Include(p => p.persona)
+                .OrderByDescending(s=> s.fecha_hora)
+                .ToListAsync(); //Ingresos
+
+            List<IngresoReportModel> resultado = new List<IngresoReportModel>();
+
+            foreach (var item in ingresos)
+            {
+                var detalle_ing = await _context.DetallesIngresos.Where(d=> d.idingreso == item.idingreso) //detalle de dichos ingresos 
+                    .Include(a=> a.articulo)
+                    .ToListAsync();
+
+                foreach (var item2 in detalle_ing)
+                {
+                    resultado.Add(new IngresoReportModel()          //insersion en coleccion 
+                    {
+                        id_ingreso = item.idingreso,
+                        codigo_arti = item2.articulo.codigo,
+                        nom_arti = item2.articulo.nombre,
+                        proveedor = item.persona.nombre,
+                        cantidad = item2.cantidad,
+                        valor = Math.Round((decimal) item2.cantidad * item2.precio,2),
+                        fecha = item.fecha_hora
+                    });
+                }
+            }
+
+            return resultado;
+        }
 
         private bool IngresoExists(int id)
         {

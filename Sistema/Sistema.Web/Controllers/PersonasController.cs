@@ -45,7 +45,7 @@ namespace Sistema.Web.Controllers
         }
 
         // GET: api/Personas/ListarProveedores
-        [Authorize(Roles = "Almacenero,Administrador")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpGet("[action]")]
         public async Task<IEnumerable<PersonaViewModel>> ListarProveedores()
         {
@@ -66,7 +66,7 @@ namespace Sistema.Web.Controllers
         }
 
         // GET: api/Personas/SelectProveedores
-        [Authorize(Roles = "Almacenero,Administrador")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpGet("[action]")]
         public async Task<IEnumerable<SelectViewModel>> SelectProveedores()
         {
@@ -97,7 +97,7 @@ namespace Sistema.Web.Controllers
 
 
         // POST: api/Personas/Crear
-        [Authorize(Roles = "Almacenero,Administrador,Vendedor")]
+        [Authorize(Roles = "Vendedor,Administrador")]
         [HttpPost("[action]")]
         public async Task<IActionResult> Crear([FromBody] CrearViewModel model)
         {
@@ -140,7 +140,7 @@ namespace Sistema.Web.Controllers
         }
 
         // PUT: api/Personas/Actualizar
-        [Authorize(Roles = "Almacenero,Administrador,Vendedor")]
+        [Authorize(Roles = "Administrador")]
         [HttpPut("[action]")]
         public async Task<IActionResult> Actualizar([FromBody] ActualizarViewModel model)
         {
