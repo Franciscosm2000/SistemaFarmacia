@@ -35,7 +35,7 @@ var router = new Router({
       component: Categoria,
       meta :{
         administrador :true,
-        almacenero: true
+        esVendedor: true
       }
     },
     {
@@ -44,7 +44,7 @@ var router = new Router({
       component: Articulo,
       meta :{
         administrador :true,
-        almacenero: true
+        esVendedor: true
       }
     },
     {
@@ -53,7 +53,7 @@ var router = new Router({
       component: Ingreso,
       meta :{
         administrador :true,
-        almacenero: true
+        esVendedor: true
       }
     },
     {
@@ -96,7 +96,7 @@ var router = new Router({
       component: Proveedor,
       meta :{
         administrador :true,
-        almacenero: true
+        esVendedor: true
       }
     },
     {

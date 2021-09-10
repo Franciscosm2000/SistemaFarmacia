@@ -34,3 +34,12 @@ C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia\Sistema\Sistema.Entidades\
 C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.AssemblyInfo.cs
 C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.dll
 C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.pdb
+C:\Users\franc\Downloads\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.dll
+C:\Users\franc\Downloads\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.pdb
+C:\Users\franc\Downloads\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\Sistema\Sistema.Entidades\bin\Debug\netcoreapp2.1\Sistema.Entidades.deps.json
+C:\Users\franc\Downloads\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\Sistema\Sistema.Entidades\bin\Debug\netcoreapp2.1\Sistema.Entidades.dll
+C:\Users\franc\Downloads\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\Sistema\Sistema.Entidades\bin\Debug\netcoreapp2.1\Sistema.Entidades.pdb
+C:\Users\franc\Downloads\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.csprojAssemblyReference.cache
+C:\Users\franc\Downloads\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.AssemblyInfoInputs.cache
+C:\Users\franc\Downloads\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.AssemblyInfo.cs
+C:\Users\franc\Downloads\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.csproj.CoreCompileInputs.cache

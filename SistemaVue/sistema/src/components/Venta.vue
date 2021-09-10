@@ -459,7 +459,7 @@
                     this.activarError=true;
                     this.msjError = err;
                     this.tipoMsj = color;
-                    setTimeout(this.resultMsj,2000);
+                    setTimeout(this.resultMsj,6000);
                 }
             },
             //FIN - SECION
@@ -745,9 +745,9 @@
                 if (!this.tipo_comprobante){
                     this.validaMensaje.push("Seleccione un tipo de comprobante.");
                 }
-                if (!this.num_comprobante){
+               /*if (!this.num_comprobante){
                     this.validaMensaje.push("Ingrese el número del comprobante.");
-                }
+                }*/
                 if (!this.impuesto || this.impuesto<0){
                     this.validaMensaje.push("Ingrese un impuesto válido.");
                 }

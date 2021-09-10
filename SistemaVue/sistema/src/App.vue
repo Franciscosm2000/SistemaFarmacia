@@ -18,7 +18,7 @@
             </v-list-tile-title>
           </v-list-tile>
         </template>
-        <template v-if="esAdministrador || esAlmacenero">
+        <template v-if="esAdministrador || esVendedor">
           <v-list-group>
             <v-list-tile slot="activator">
               <v-list-tile-content>
@@ -50,7 +50,7 @@
 
           </v-list-group>
         </template>
-        <template v-if="esAdministrador || esAlmacenero">
+        <template v-if="esAdministrador || esVendedor">
           <v-list-group>
             <v-list-tile slot="activator">
               <v-list-tile-content>

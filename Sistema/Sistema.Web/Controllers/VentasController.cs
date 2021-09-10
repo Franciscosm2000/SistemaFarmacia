@@ -175,6 +175,15 @@ namespace Sistema.Web.Controllers
             }
             var fechaHora = DateTime.Now;
 
+            foreach (var item in model.detalles)
+            {
+                var stock = await _context.Articulos.FirstOrDefaultAsync(a=> a.idarticulo == item.idarticulo);
+
+                if (stock.stock < item.cantidad)
+                    return BadRequest("No hay suficiente inventario para el arituculo "+item.articulo+", hace falta un faltante de" +
+                        " : "+(item.cantidad - stock.stock));
+            }
+
             Venta venta = new Venta
             {
                 idcliente = model.idcliente,
@@ -269,7 +278,7 @@ namespace Sistema.Web.Controllers
         public async Task<List<VentaReportModel>> SalidasXFecha([FromRoute] DateTime desde, DateTime hasta)
         {
 
-            var salidas = await _context.Ventas.Where(i => (i.fecha_hora >= desde && i.fecha_hora <= hasta) && i.estado == "Aceptado")
+            var salidas = await _context.Ventas.Where(i => (i.fecha_hora >= desde && i.fecha_hora <= hasta) && i.estado.ToUpper() == "Aceptado".ToUpper())
                 .Include(p=> p.persona)
                 .OrderByDescending(s=> s.fecha_hora)
                 .ToListAsync(); //Ingresos
@@ -292,8 +301,8 @@ namespace Sistema.Web.Controllers
                         cliente = item.persona.nombre,
                         cantidad = item2.cantidad,
                         valor = Math.Round((decimal)item2.cantidad * item2.precio, 2),
-                        fecha = item.fecha_hora
-                    });
+                        fecha = item.fecha_hora.ToString("dd/MM/yyyy")
+                    }); ;
                 }
             }
 

@@ -17,7 +17,7 @@ namespace Sistema.Entidades.Almacen
         [Required]
         public string tipo_comprobante { get; set; }
 
-        [Required]
+        //[Required]
         public string num_comprobante { get; set; }
         [Required]
         public DateTime fecha_hora { get; set; }

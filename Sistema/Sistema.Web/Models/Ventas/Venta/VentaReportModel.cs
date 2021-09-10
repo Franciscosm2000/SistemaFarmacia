@@ -13,6 +13,6 @@ namespace Sistema.Web.Models.Ventas.Venta
         public string cliente { get; set; }
         public int cantidad { get; set; }
         public decimal valor { get; set; }
-        public DateTime fecha { get; set; }
+        public string fecha { get; set; }
     }
 }
