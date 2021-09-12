@@ -127,7 +127,7 @@
                 id: '',
                 nombre:'',
                 tipo_documento: '',
-                documentos: ['DNI','RUC','PASAPORTE','CEDULA'],
+                documentos: ['RUC','CEDULA','OTRO'],
                 num_documento: '',
                 direccion: '',
                 telefono: '',

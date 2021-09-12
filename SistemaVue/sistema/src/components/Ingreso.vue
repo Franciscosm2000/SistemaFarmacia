@@ -249,7 +249,7 @@
                     { text: 'Fecha', value: 'fecha_hora'  },
                     { text: 'Impuesto (%)', value: 'impuesto', sortable: false  },
                     { text: 'Total', value: 'total', sortable: false  },
-                    { text: 'Estado', value: 'estado', sortable: false  }                
+                    { text: 'Estado', value: 'estado' }                
                 ],
                 cabeceraDetalles: [
                     { text: 'Borrar', value: 'borrar', sortable: false },
@@ -281,7 +281,7 @@
                     { text: 'Artículo', value: 'nombre'},
                     { text: 'Categoría', value: 'categoria' },
                     { text: 'Descripción', value: 'descripcion', sortable: false },
-                    { text: 'Stock', value: 'stock', sortable: false  },
+                    { text: 'Stock', value: 'stock' },
                     { text: 'Precio Venta', value: 'precio_venta', sortable: false  }            
                 ],
                 articulos:[],
@@ -351,6 +351,7 @@
 
             mostrarNuevo(){
                 this.verNuevo=1;
+                this.tipo_comprobante = 'FACTURA';
             },
             ocultarNuevo(){
                 this.verNuevo=0;

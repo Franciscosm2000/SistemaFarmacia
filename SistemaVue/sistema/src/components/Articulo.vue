@@ -171,10 +171,10 @@
                     { text: 'Código', value: 'codigo', sortable: false },
                     { text: 'Nombre', value: 'nombre' },
                     { text: 'Categoría', value: 'categoria' },
-                    { text: 'Stock', value: 'stock', sortable: false  },
+                    { text: 'Stock', value: 'stock'  },
                     { text: 'Precio Venta', value: 'precio_venta' },
                     { text: 'Descripción', value: 'descripcion', sortable: false  },
-                    { text: 'Estado', value: 'condicion', sortable: false  }                
+                    { text: 'Estado', value: 'condicion' }                
                 ],
                 search: '',
                 editedIndex: -1,

@@ -58,7 +58,7 @@
                 headers: [
                     { text: 'Nombre', value: 'nombre' },
                     { text: 'Descripción', value: 'descripcion', sortable: false  },
-                    { text: 'Estado', value: 'condicion', sortable: false  }                
+                    { text: 'Estado', value: 'condicion' }                
                 ],
                 search: '',
                 login_:false,

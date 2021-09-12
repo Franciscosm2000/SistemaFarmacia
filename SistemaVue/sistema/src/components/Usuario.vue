@@ -172,13 +172,13 @@
                 headers: [
                     { text: 'Opciones', value: 'opciones', sortable: false },
                     { text: 'Nombre', value: 'nombre' },
+                    { text: 'Usuario', value: 'email', sortable: false  },
                     { text: 'Rol', value: 'rol' },
                     { text: 'Tipo Documento', value: 'tipo_documento' },
                     { text: 'Número Documento', value: 'num_documento', sortable: false  },
                     { text: 'Dirección', value: 'direccion', sortable: false  },
                     { text: 'Teléfono', value: 'telefono', sortable: false  },
-                    { text: 'Email', value: 'email', sortable: false  },
-                    { text: 'Estado', value: 'condicion', sortable: false  }                
+                    { text: 'Estado', value: 'condicion'}                
                 ],
                 search: '',
                 editedIndex: -1,

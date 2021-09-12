@@ -124,7 +124,7 @@
                 id: '',
                 nombre:'',
                 tipo_documento: '',
-                documentos: ['CEDULA'],
+                documentos: ['CEDULA','OTRO'],
                 num_documento: '',
                 direccion: '',
                 telefono: '',

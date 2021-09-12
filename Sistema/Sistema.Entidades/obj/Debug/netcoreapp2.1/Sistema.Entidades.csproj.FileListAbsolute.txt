@@ -43,3 +43,21 @@ C:\Users\franc\Downloads\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d
 C:\Users\franc\Downloads\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.AssemblyInfoInputs.cache
 C:\Users\franc\Downloads\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.AssemblyInfo.cs
 C:\Users\franc\Downloads\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\SistemaFarmacia-2d41036a8688b12057cfb7386bfd8b5b4e5531d0\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Downloads\SistemaFarmacia-main\SistemaFarmacia-main\Sistema\Sistema.Entidades\bin\Debug\netcoreapp2.1\Sistema.Entidades.deps.json
+C:\Users\LENOVO\Downloads\SistemaFarmacia-main\SistemaFarmacia-main\Sistema\Sistema.Entidades\bin\Debug\netcoreapp2.1\Sistema.Entidades.dll
+C:\Users\LENOVO\Downloads\SistemaFarmacia-main\SistemaFarmacia-main\Sistema\Sistema.Entidades\bin\Debug\netcoreapp2.1\Sistema.Entidades.pdb
+C:\Users\LENOVO\Downloads\SistemaFarmacia-main\SistemaFarmacia-main\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.csprojAssemblyReference.cache
+C:\Users\LENOVO\Downloads\SistemaFarmacia-main\SistemaFarmacia-main\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Downloads\SistemaFarmacia-main\SistemaFarmacia-main\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.AssemblyInfoInputs.cache
+C:\Users\LENOVO\Downloads\SistemaFarmacia-main\SistemaFarmacia-main\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.AssemblyInfo.cs
+C:\Users\LENOVO\Downloads\SistemaFarmacia-main\SistemaFarmacia-main\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.dll
+C:\Users\LENOVO\Downloads\SistemaFarmacia-main\SistemaFarmacia-main\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.pdb
+C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia-main\Sistema\Sistema.Entidades\bin\Debug\netcoreapp2.1\Sistema.Entidades.deps.json
+C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia-main\Sistema\Sistema.Entidades\bin\Debug\netcoreapp2.1\Sistema.Entidades.dll
+C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia-main\Sistema\Sistema.Entidades\bin\Debug\netcoreapp2.1\Sistema.Entidades.pdb
+C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia-main\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.csprojAssemblyReference.cache
+C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia-main\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia-main\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.AssemblyInfoInputs.cache
+C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia-main\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.AssemblyInfo.cs
+C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia-main\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.dll
+C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia-main\Sistema\Sistema.Entidades\obj\Debug\netcoreapp2.1\Sistema.Entidades.pdb

@@ -140,7 +140,7 @@
                     { text: 'Opciones', value: 'opciones', sortable: false },
                     { text: 'Nombre', value: 'nombre' },
                     { text: 'Descripción', value: 'descripcion', sortable: false  },
-                    { text: 'Estado', value: 'condicion', sortable: false  }                
+                    { text: 'Estado', value: 'condicion'  }                
                 ],
                 search: '',
                 editedIndex: -1,

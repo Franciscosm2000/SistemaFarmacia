@@ -14,7 +14,7 @@
 
             <v-card-title primary-title>
               <div class="texto">
-                <h3 class="headline mb-0">Ingresos</h3>
+                <h3 class="headline mb-0">Ingreso de inventario</h3>
                 <div>
                   Se muestra el listado de ingresos aprobadas en un rango de
                   fecha
@@ -51,7 +51,7 @@
                     </v-layout>
                     <div id="principal" class="RecuperacionQuincena">
                       <header class="cabecera">
-                        <h1>INGRESOS APROBADA</h1>
+                        <h1>INGRESOS Inventario</h1>
                         <h2>FARMACIA ESCORCIA</h2>
                         <div class="caja">
                           <h3>
@@ -115,7 +115,7 @@
 
             <v-card-title primary-title>
               <div class="texto">
-                <h3 class="headline mb-0">Egresos</h3>
+                <h3 class="headline mb-0">Ventas</h3>
                 <div>
                   Se muestra el listado de egresos aprobadas en un rango de
                   fecha
@@ -152,7 +152,7 @@
                     </v-layout>
                     <div id="principal" class="RecuperacionQuincena">
                       <header class="cabecera">
-                        <h1>EGRESOS APROBADA</h1>
+                        <h1>VENTAS APROBADA</h1>
                         <h2>FARMACIA ESCORCIA</h2>
                         <div class="caja">
                           <h3>
@@ -492,7 +492,7 @@ export default {
         var doc = new jsPDF("l");
         doc.setFontSize(20);
         doc.setFont('Roboto-Regular', 'bold');
-        var titulo = "EGRESOS";
+        var titulo = "VENTAS";
         var subTitulo= "Farmacia Escorcia";
         //TEXTO
         doc.setTextColor(12, 34, 82);

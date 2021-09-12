@@ -7,6 +7,17 @@
       v-model="drawer"
       v-if="logueado"
     >
+    <template>
+         <br> 
+          <v-divider ></v-divider>
+
+          <div class="usuarioText">
+              <p>Usuario: {{this.$store.state.usuario.email }}</p>
+              <p>Rol: {{this.$store.state.usuario.rol}}</p>     
+          </div>
+          
+          <v-divider ></v-divider>
+       </template>
       <v-list dense>
         <template v-if="esAdministrador || esAlmacenero || esVendedor">
           <v-list-tile :to="{name:'home'}">
@@ -43,7 +54,7 @@
               </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title>
-                  Artículos
+                  Productos
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
@@ -65,7 +76,7 @@
               </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title>
-                  Ingresos
+                  Ingresos de inventario
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
@@ -119,7 +130,7 @@
             <v-list-tile slot="activator">
               <v-list-tile-content>
                 <v-list-tile-title>
-                  Accesos
+                  Accesos del sistema
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
@@ -151,7 +162,7 @@
             <v-list-tile slot="activator">
               <v-list-tile-content>
                 <v-list-tile-title>
-                  Consultas
+                  Reporteria
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
@@ -161,17 +172,7 @@
               </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title>
-                  Consultas compras
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile :to="{ name: ''}">
-              <v-list-tile-action>
-                <v-icon>table_chart</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  Consultas ventas
+                  Reportes
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
@@ -264,3 +265,12 @@ export default {
   }
 }
 </script>
+<style>
+.usuarioText{
+      text-transform: uppercase;
+      font-size: 15px;
+      font-weight: bold;
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+</style>

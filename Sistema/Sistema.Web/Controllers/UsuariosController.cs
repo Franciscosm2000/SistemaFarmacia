@@ -68,7 +68,7 @@ namespace Sistema.Web.Controllers
 
             if (await _context.Usuarios.AnyAsync(u => u.email == email))
             {
-                return BadRequest("El email ya existe");
+                return BadRequest("El ususario ya existe");
             }
 
             var dat = await _context.Usuarios.Where(u=> u.email.ToUpper() == model.email.ToUpper()).FirstOrDefaultAsync();
