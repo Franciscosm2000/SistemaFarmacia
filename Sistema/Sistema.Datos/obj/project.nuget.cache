@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9BB9ftc4iBX1MHgPdkO6xjaX8LtDwyYI5D/eKprqkX4GfQdf5So3i8CIlKC7F12IbNbpwn2N1ZTrH0zYsmxSoA==",
+  "dgSpecHash": "CCFsyjFvQXFnTce3WEH2YAtvh/GL4m0Xt+lpGz/zizHmD/J+TBHdlNj1JC1RkNSx4ylILBi6cbQD3ktj8pYh9g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\LENOVO\\Downloads\\SistemaFarmacia-main\\SistemaFarmacia-main\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj",
+  "projectFilePath": "C:\\Users\\LENOVO\\Desktop\\git\\SistemaFarmacia\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.entityframeworkcore\\2.1.2\\microsoft.entityframeworkcore.2.1.2.nupkg.sha512",

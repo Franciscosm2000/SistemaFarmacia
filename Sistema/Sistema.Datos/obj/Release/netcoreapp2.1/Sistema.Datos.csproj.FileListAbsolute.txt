@@ -40,3 +40,17 @@ C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia-main\Sistema\Sistema.Datos
 C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia-main\Sistema\Sistema.Datos\obj\Release\netcoreapp2.1\Sistema.Datos.csproj.CopyComplete
 C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia-main\Sistema\Sistema.Datos\obj\Release\netcoreapp2.1\Sistema.Datos.dll
 C:\Users\LENOVO\Desktop\Nueva carpeta\SistemaFarmacia-main\Sistema\Sistema.Datos\obj\Release\netcoreapp2.1\Sistema.Datos.pdb
+C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Datos\obj\Release\netcoreapp2.1\Sistema.Datos.dll
+C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Datos\obj\Release\netcoreapp2.1\Sistema.Datos.pdb
+C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Datos\bin\Release\netcoreapp2.1\Sistema.Datos.deps.json
+C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Datos\bin\Release\netcoreapp2.1\Sistema.Datos.runtimeconfig.json
+C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Datos\bin\Release\netcoreapp2.1\Sistema.Datos.runtimeconfig.dev.json
+C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Datos\bin\Release\netcoreapp2.1\Sistema.Datos.dll
+C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Datos\bin\Release\netcoreapp2.1\Sistema.Datos.pdb
+C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Datos\bin\Release\netcoreapp2.1\Sistema.Entidades.dll
+C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Datos\bin\Release\netcoreapp2.1\Sistema.Entidades.pdb
+C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Datos\obj\Release\netcoreapp2.1\Sistema.Datos.csprojAssemblyReference.cache
+C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Datos\obj\Release\netcoreapp2.1\Sistema.Datos.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Datos\obj\Release\netcoreapp2.1\Sistema.Datos.AssemblyInfoInputs.cache
+C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Datos\obj\Release\netcoreapp2.1\Sistema.Datos.AssemblyInfo.cs
+C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Datos\obj\Release\netcoreapp2.1\Sistema.Datos.csproj.CopyComplete

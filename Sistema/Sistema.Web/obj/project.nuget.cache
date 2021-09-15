@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iPERNpjX49H7Vl5tG36zyZyUEBvS1Rk9TlHTvn9HGv94wfn/Ko3kIvtrm3O2KGq88V5dm21KyLvMivbSAP/y+w==",
+  "dgSpecHash": "suiMTrT6NRwtEz3cdISwhCdzZ0vJBTR++Y+IDH+Byw19y00QvF7oPmkr0KDItXpb+5GXmmB3YRE/qcdpJG5kyA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\LENOVO\\Downloads\\SistemaFarmacia-main\\SistemaFarmacia-main\\Sistema\\Sistema.Web\\Sistema.Web.csproj",
+  "projectFilePath": "C:\\Users\\LENOVO\\Desktop\\git\\SistemaFarmacia\\Sistema\\Sistema.Web\\Sistema.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",

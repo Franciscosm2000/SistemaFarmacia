@@ -5027,11 +5027,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\Nueva carpeta\\SistemaFarmacia-main\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj",
+      "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\git\\SistemaFarmacia\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj",
       "projectName": "Sistema.Datos",
-      "projectPath": "C:\\Users\\LENOVO\\Desktop\\Nueva carpeta\\SistemaFarmacia-main\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj",
+      "projectPath": "C:\\Users\\LENOVO\\Desktop\\git\\SistemaFarmacia\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj",
       "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LENOVO\\Desktop\\Nueva carpeta\\SistemaFarmacia-main\\Sistema\\Sistema.Datos\\obj\\",
+      "outputPath": "C:\\Users\\LENOVO\\Desktop\\git\\SistemaFarmacia\\Sistema\\Sistema.Datos\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5050,8 +5050,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\LENOVO\\Desktop\\Nueva carpeta\\SistemaFarmacia-main\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj": {
-              "projectPath": "C:\\Users\\LENOVO\\Desktop\\Nueva carpeta\\SistemaFarmacia-main\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj"
+            "C:\\Users\\LENOVO\\Desktop\\git\\SistemaFarmacia\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj": {
+              "projectPath": "C:\\Users\\LENOVO\\Desktop\\git\\SistemaFarmacia\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj"
             }
           }
         }

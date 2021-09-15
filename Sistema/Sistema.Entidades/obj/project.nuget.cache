@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Brlac7uYF4L+dTKcOzdpFY6Br5+zp/u1MRxE4HLpIbKqBlxMso/gDqhwN301RlD+0nTDhDLd3lO8F+MGqOsxyg==",
+  "dgSpecHash": "Yec78KB8EdlG/4ZwcIPv/SDBJQJ84jWxGR735lvwtzleFTuR0M8z+ro9Xg8GZEUrDqcYr4yIYccPP1GTvt1ViQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\LENOVO\\Downloads\\SistemaFarmacia-main\\SistemaFarmacia-main\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj",
+  "projectFilePath": "C:\\Users\\LENOVO\\Desktop\\git\\SistemaFarmacia\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.app\\2.1.0\\microsoft.netcore.app.2.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.dotnetapphost\\2.1.0\\microsoft.netcore.dotnetapphost.2.1.0.nupkg.sha512",

@@ -17396,11 +17396,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\Nueva carpeta\\SistemaFarmacia-main\\Sistema\\Sistema.Web\\Sistema.Web.csproj",
+      "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\git\\SistemaFarmacia\\Sistema\\Sistema.Web\\Sistema.Web.csproj",
       "projectName": "Sistema.Web",
-      "projectPath": "C:\\Users\\LENOVO\\Desktop\\Nueva carpeta\\SistemaFarmacia-main\\Sistema\\Sistema.Web\\Sistema.Web.csproj",
+      "projectPath": "C:\\Users\\LENOVO\\Desktop\\git\\SistemaFarmacia\\Sistema\\Sistema.Web\\Sistema.Web.csproj",
       "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LENOVO\\Desktop\\Nueva carpeta\\SistemaFarmacia-main\\Sistema\\Sistema.Web\\obj\\publish\\win-x86\\",
+      "outputPath": "C:\\Users\\LENOVO\\Desktop\\git\\SistemaFarmacia\\Sistema\\Sistema.Web\\obj\\publish\\win-x86\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -17419,11 +17419,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\LENOVO\\Desktop\\Nueva carpeta\\SistemaFarmacia-main\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj": {
-              "projectPath": "C:\\Users\\LENOVO\\Desktop\\Nueva carpeta\\SistemaFarmacia-main\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj"
+            "C:\\Users\\LENOVO\\Desktop\\git\\SistemaFarmacia\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj": {
+              "projectPath": "C:\\Users\\LENOVO\\Desktop\\git\\SistemaFarmacia\\Sistema\\Sistema.Datos\\Sistema.Datos.csproj"
             },
-            "C:\\Users\\LENOVO\\Desktop\\Nueva carpeta\\SistemaFarmacia-main\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj": {
-              "projectPath": "C:\\Users\\LENOVO\\Desktop\\Nueva carpeta\\SistemaFarmacia-main\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj"
+            "C:\\Users\\LENOVO\\Desktop\\git\\SistemaFarmacia\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj": {
+              "projectPath": "C:\\Users\\LENOVO\\Desktop\\git\\SistemaFarmacia\\Sistema\\Sistema.Entidades\\Sistema.Entidades.csproj"
             }
           }
         }
