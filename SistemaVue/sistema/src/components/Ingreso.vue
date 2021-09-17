@@ -157,7 +157,7 @@
                         </v-text-field>
                     </v-flex>
                     <v-flex xs12 sm8 md8 lg8 xl8>
-                        <v-text-field @keyup.enter="buscarCodigo()" v-model="codigo" label="Código">
+                        <v-text-field id="buscar_codigo" autofocus @keyup.enter="buscarCodigo()" v-model="codigo" label="Código">
                         </v-text-field>
                         <barcode v-bind:value="codigo">
                             Código de barra.
@@ -356,6 +356,7 @@
             ocultarNuevo(){
                 this.verNuevo=0;
                 this.limpiar();
+                
             },
             buscarCodigo(){
 
@@ -374,6 +375,7 @@
                     me.codigo = '';
                     me.resultPantalla();
                     me.activarErrores(2,"Articulo agregado.","green");
+                    buscar_codigo.focus();  
                 }).catch(function(error){
                     me.resultPantalla(); //Cierre de pantalla
                     if (error.response.status==401){
@@ -384,6 +386,7 @@
                     }
                     else if (error.response.status == 404){
                         me.activarErrores(2,"El articulo no existe.","red");
+                        buscar_codigo.focus();  
                         me.codigo = '';
                     }
                     else{
@@ -419,12 +422,14 @@
             },
             ocultarArticulos(){
                 this.verArticulos=0;
+                buscar_codigo.focus();  
             },
             agregarDetalle(data = []){
                 this.errorArticulo=null;
                 if (this.encuentra(data['idarticulo'])){
                    // this.errorArticulo="El artículo ya ha sido agregado."
                     this.activarErrores(2,"Articulo ya agreagdo.","red");
+                    buscar_codigo.focus();  
                 }
                 else{
                     this.detalles.push(
@@ -435,6 +440,7 @@
                     );
 
                     this.activarErrores(2,"Articulo agregado.","green");
+                    buscar_codigo.focus();  
                 }
                 
             },

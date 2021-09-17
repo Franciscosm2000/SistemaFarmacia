@@ -70,7 +70,8 @@
                             <th>Articulo</th>
                             <th>Proveedor</th>
                             <th>Cantidad</th>
-                            <th>Valor</th>
+                            <th>Precio</th>
+                            <th>Total</th>
                             <th>Fecha</th>
                           </tr>
 
@@ -80,6 +81,7 @@
                             <th v-text="x.nom_arti"></th>
                             <th v-text="x.proveedor"></th>
                             <th v-text="x.cantidad"></th>  
+                            <th v-text="x.precio"></th>  
                             <th v-text="x.valor"></th>
                             <th v-text="x.fecha"></th>
                           </tr>
@@ -171,7 +173,8 @@
                             <th>Articulo</th>
                             <th>Cliente</th>
                             <th>Cantidad</th>
-                            <th>Valor</th>
+                            <th>Precio</th>
+                            <th>Total</th>
                             <th>Fecha</th>
                           </tr>
 
@@ -181,6 +184,7 @@
                             <th v-text="x.nom_arti"></th>
                             <th v-text="x.cliente"></th>
                             <th v-text="x.cantidad"></th>  
+                            <th v-text="x.precio"></th>  
                             <th v-text="x.valor"></th>
                             <th v-text="x.fecha"></th>
                           </tr>
@@ -378,7 +382,7 @@ export default {
         var total = 0;
 
         this.reporteIngreso.forEach(element => {
-            total += element.valor * element.cantidad;
+            total += element.valor ;
         });
 
         var result_total = this.formatMoneda(total);
@@ -389,8 +393,8 @@ export default {
             { title: "Articulo", dataKey: "nom_arti" },
             { title: "Proveedor", dataKey: "proveedor" },
             { title: "Cantidad", dataKey: "cantidad" },
-            { title: "Valor", dataKey: "valor" },
-            { title: "Total", dataKey: "total" },
+            { title: "Precio", dataKey: "precio" },
+            { title: "Total", dataKey: "valor" },
             { title: "Fecha", dataKey: "fecha" },
         ];
         var rows = [];
@@ -402,9 +406,9 @@ export default {
             nom_arti: x.nom_arti,
             proveedor: x.proveedor,
             cantidad: x.cantidad,
-            valor: 'C$'+ x.valor,
+            precio: 'C$'+ x.precio,
             fecha: x.fecha,
-            total :'C$'+ (x.valor * x.cantidad)
+            valor :'C$'+ x.valor
             });
         });
 
@@ -458,7 +462,7 @@ export default {
         var total = 0;
 
         this.reporteEgreso.forEach(element => {
-            total += element.valor * element.cantidad;
+            total += element.valor;
         });
 
         var result_total = this.formatMoneda(total);
@@ -469,8 +473,8 @@ export default {
             { title: "Articulo", dataKey: "nom_arti" },
             { title: "Cliente", dataKey: "cliente" },
             { title: "Cantidad", dataKey: "cantidad" },
-            { title: "Valor", dataKey: "valor" },
-            { title: "Total", dataKey: "total" },
+            { title: "Precio", dataKey: "precio" },
+            { title: "Total", dataKey: "valor" },
             { title: "Fecha", dataKey: "fecha" },
         ];
         var rows = [];
@@ -482,9 +486,9 @@ export default {
             nom_arti: x.nom_arti,
             cliente: x.cliente,
             cantidad: x.cantidad,
-            valor: 'C$'+ x.valor,
+            precio: 'C$'+ x.precio,
             fecha: x.fecha,
-            total :'C$'+ (x.valor * x.cantidad)
+            valor :'C$'+ x.valor
             });
         });
 

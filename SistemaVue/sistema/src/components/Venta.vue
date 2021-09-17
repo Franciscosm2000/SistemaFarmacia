@@ -259,11 +259,11 @@
                         </v-autocomplete>
                     </v-flex>
                     <v-flex xs12 sm4 md4 lg4 xl4>
-                        <v-text-field type="number" v-model="impuesto" label="Impuesto">
+                        <v-text-field readonly type="number" v-model="impuesto" label="Impuesto">
                         </v-text-field>
                     </v-flex>
                     <v-flex xs12 sm8 md8 lg8 xl8>
-                        <v-text-field @keyup.enter="buscarCodigo()" v-model="codigo" label="Código">
+                        <v-text-field autofocus id="buscar_codigo" @keyup.enter="buscarCodigo()" v-model="codigo" label="Código">
                         </v-text-field>
                         <barcode v-bind:value="codigo">
                             Código de barra.
@@ -297,8 +297,8 @@
                                 </td>
                                 <td>{{ props.item.articulo }}</td>
                                 <td><v-text-field type="number" v-model="props.item.cantidad"></v-text-field></td>
-                                <td><v-text-field type="number" v-model="props.item.precio"></v-text-field></td>
-                                <td><v-text-field type="number" v-model="props.item.descuento"></v-text-field></td>
+                                <td>{{props.item.precio}}</td>
+                                <td>{{props.item.descuento}}</td>
                                 <td>$ {{ props.item.cantidad * props.item.precio - props.item.descuento}}</td>
                             </template>
                             <template slot="no-data">
@@ -522,6 +522,7 @@
                     me.codigo = '';
                     me.resultPantalla();
                     me.activarErrores(2,"Articulo agregado.","green");
+                    buscar_codigo.focus();
                 }).catch(function(error){
                     me.resultPantalla(); //Cierre de pantalla
                     if (error.response.status==401){
@@ -532,6 +533,7 @@
                     }
                     else if (error.response.status == 404){
                         me.activarErrores(2,"El articulo no existe.","red");
+                        buscar_codigo.focus();  
                         me.codigo = '';
                     }
                     else{
@@ -567,12 +569,14 @@
             },
             ocultarArticulos(){
                 this.verArticulos=0;
+                buscar_codigo.focus();
             },
             agregarDetalle(data = []){
                 this.errorArticulo=null;
                 if (this.encuentra(data['idarticulo'])){
                     //this.errorArticulo="El artículo ya ha sido agregado."
                     this.activarErrores(2,"El articulo ya esta agregado","red");
+                    buscar_codigo.focus();
                 }
                 else{
                     this.detalles.push(
@@ -583,6 +587,7 @@
                         descuento:0}
                     );
                     this.activarErrores(2,"Articulo Agregado.","green");
+                    buscar_codigo.focus();
                 }
                 
             },
