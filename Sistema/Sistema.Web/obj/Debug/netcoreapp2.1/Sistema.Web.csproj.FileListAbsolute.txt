@@ -235,3 +235,4 @@ C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Web\obj\Debug\netcor
 C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Web\obj\Debug\netcoreapp2.1\Sistema.Web.dll
 C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Web\obj\Debug\netcoreapp2.1\Sistema.Web.pdb
 C:\Users\LENOVO\Desktop\git\SistemaFarmacia\Sistema\Sistema.Web\obj\Debug\netcoreapp2.1\Sistema.Web.genruntimeconfig.cache
+C:\Users\franc\OneDrive\Escritorio\Nueva carpeta\SistemaFarmacia\Sistema\Sistema.Web\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs

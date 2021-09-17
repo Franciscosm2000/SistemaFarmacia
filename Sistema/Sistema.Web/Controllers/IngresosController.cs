@@ -228,6 +228,7 @@ namespace Sistema.Web.Controllers
                         nom_arti = item2.articulo.nombre,
                         proveedor = item.persona.nombre,
                         cantidad = item2.cantidad,
+                        precio = Math.Round(item2.precio),
                         valor = Math.Round((decimal) item2.cantidad * item2.precio,2),
                         fecha = item.fecha_hora.ToString("dd/MM/yyyy")
                     });
