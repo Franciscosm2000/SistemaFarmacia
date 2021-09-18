@@ -432,15 +432,18 @@ export default {
         doc.text(desde, 32, 45);
         doc.text("Hasta:", 55, 45);
         doc.text(hasta, 67, 45);
+        
+        doc.setFontSize(12);
+        doc.setTextColor(0, 0, 0);
+        doc.text("Total : ", 200,45);
+        doc.text(result_total, 215, 45);
 
         doc.autoTable(columns, rows, {
             startY: 60,
              horizontalPageBreak: true,
         });
 
-        doc.setFontSize(12);
-        doc.text("Total : ", 200,45);
-        doc.text(result_total, 215, 45);
+        
 
     
         doc.save('Ingresos por fecha.pdf');
@@ -513,17 +516,18 @@ export default {
         doc.text("Hasta:", 55, 45);
         doc.text(hasta, 67, 45);
 
+        doc.setFontSize(12);
+        doc.setTextColor(0, 0, 0);
+        doc.text("Total : ", 200,45);
+        doc.text(result_total, 215, 45);
+
         doc.autoTable(columns, rows, {
             startY: 60,
              horizontalPageBreak: true,
         });
 
-        doc.setFontSize(12);
-        doc.text("Total : ", 200,45);
-        doc.text(result_total, 215, 45);
-
     
-        doc.save('Egresos por fecha.pdf');
+        doc.save('Ventas por fecha.pdf');
 
         }
   },

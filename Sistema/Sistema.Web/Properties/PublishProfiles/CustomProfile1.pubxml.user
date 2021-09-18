@@ -6,6 +6,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\inetpub\wwwroot\SistemaFarmacia</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\franc\OneDrive\Documentos\SISTEMAS</_PublishTargetUrl>
+    <History>True|2021-09-17T01:26:57.8611412Z;False|2021-09-16T19:22:37.8906101-06:00;False|2021-09-16T19:21:18.0785501-06:00;</History>
   </PropertyGroup>
 </Project>

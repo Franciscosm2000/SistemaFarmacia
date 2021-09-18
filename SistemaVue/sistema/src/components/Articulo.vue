@@ -168,7 +168,7 @@
                 dialog: false,
                 headers: [
                     { text: 'Opciones', value: 'opciones', sortable: false },
-                    { text: 'Código', value: 'codigo', sortable: false },
+                    { text: 'Código', value: 'codigo'},
                     { text: 'Nombre', value: 'nombre' },
                     { text: 'Categoría', value: 'categoria' },
                     { text: 'Stock', value: 'stock'  },

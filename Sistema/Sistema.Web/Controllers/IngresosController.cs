@@ -130,8 +130,11 @@ namespace Sistema.Web.Controllers
                 await _context.SaveChangesAsync();
 
                 var id = ingreso.idingreso;
+
                 foreach (var det in model.detalles)
                 {
+
+
                     DetalleIngreso detalle = new DetalleIngreso
                     {
                         idingreso = id,
@@ -140,6 +143,15 @@ namespace Sistema.Web.Controllers
                         precio = det.precio
                     };
                     _context.DetallesIngresos.Add(detalle);
+
+                    var producto = await _context.Articulos.FirstOrDefaultAsync(a => a.idarticulo == det.idarticulo);
+
+                    if (producto == null) {
+                        return BadRequest("Error al mandar stock al articulo con id: "+det.idarticulo);
+                    }
+
+                    producto.stock = ( producto.stock + det.cantidad );
+
                 }
                 await _context.SaveChangesAsync();
             }
